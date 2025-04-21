@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "model": 1,
+    "image": "https://s3-alpha-sig.figma.com/img/fddf/909e/a0c478d3a49ee12fa996253becf0c1f3?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Q17TULaeEuwa0DyB0UFgwk0uZSf2~7EVFEpRsF0Z1bVgXqJCNPhfJKhzrciOqdPXvnNeOm8XpbnZuE0oCRek-HGSdM0tgy1MQRzZmbRwRWO3HCSJHE0MWjgDcf4PC-xbZJZdAJCIn9pQAbMcBp0zcdJq2~0KoiUn2rTorL3vFnB1GqJ~QBsNGTUNLk-OdHJ7HcIRUsXTF9sWjuxVVAQJRviFLEIOK8LmmJaFgRXwSquflg0JkPPYVpYlrV3ClHtx-HfkCKZ10GZ~kyjxqGJo-scoCqEJbbRm~MXGQabiwAzaizOHcvSvW2oVQjhW8wi06WVLvpbBQZYSQZZ6Ju85Tw__",
+    "releaseYear": 2024,
+    "price": 12000,
+    "engineSize": 2.5,
+    "mileage": 20000,
+    "gearbox": "auto",
+    "city": "Baku",
+    "datetime": "2025-04-19T21:46:18.754Z"
+  },
+  {
+    "id": 2,
+    "model": 2,
+    "image": "https://s3-alpha-sig.figma.com/img/21af/83cb/88cd9d92351ef134be498f5ebb9798ac?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NSOksb6NH3tLTMr-5ppUSr-k3zz8B~h5jVYFi62X4W2JgT5XbN3MaHxi9NLeNj4Kb52XYc38T8bmwjy1CO7kmALR5ECKGelFW0V3-Q2v8R3FY3pdUdBjCGXhismA9mcbD8bT4YPQ9hvCX1r8P7j-KWzayH0Ev9kvtRGKcjfQ1ekKSQfvmsgXq5QMMcUpKPH8xIP13Xl-aQtza4IG2aesK9KWXVJ9jnN8hIn6C0osG1Hw20w0lEFxv-Qo-MLm-12KcjXnSqjWcO8F2u-cnChdK0p2Xrkmv2n61rq1pSiv7przMz7sElx8O4ctpDD9Nu22i5UVHBExwyNUysu7M-u-WA__",
+    "releaseYear": 1978,
+    "price": 69000,
+    "engineSize": 5.5,
+    "mileage": 200000,
+    "gearbox": "manual",
+    "city": "Tokyo",
+    "datetime": "2025-04-19T21:44:11.456Z"
+  },
+  {
+    "id": 3,
+    "model": 3,
+    "image": "https://s3-alpha-sig.figma.com/img/7011/6797/3dac1b95b26dde486af7ed38f5bdf801?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=jMKrezoC4SGaIdstlo831BGkyN3lbwC-IeNNaydSHPmIr~jRWthDK7Zapii4-VWK3mpyAt7y31KtLIaEH~5j67U11GhGPc-kIhd3VRXcNeqSecb4mCbPefHQvYsVOo-2kGduI6H0Ws4UMcZDgef8hRaIL2JiZkEueTzZXIBFxil5W-m9CjhcDY8xAMjgOVxaeaD~WAhfFtfytlHxkHZJ~OUSxesvK94gKbYjzUtZSTGTn-7Oqq-l2tv4exW3K2M9bwHDbM1AnjuerNjDZte8op~i97BX6NYt5sjDO8LELI97ieSdj7hO5Rz1621fu7-OXlZUk78ItbTcZKiCoasinA__",
+    "releaseYear": 2024,
+    "price": 25000,
+    "engineSize": 2.0,
+    "mileage": 25000,
+    "gearbox": "auto",
+    "city": "Baku",
+    "datetime": "2025-04-19T20:37:56.712Z"
+  },
+  {
+    "id": 4,
+    "model": 4,
+    "image": "https://s3-alpha-sig.figma.com/img/c91e/0784/cbb73fdfc84f42ec875b28ea00d48f1b?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=UBMXvUI7gPk9TFwPtSTz8pdrhaYm~iOaoKBwXxbUtauChOzhndHro~qKxBMYr6MdiQEY4FicFfbovCkj2~iYM8wHwrqRPXVFy6x0pzDOGo1PbwC5lZ3GxyFlVye7O967PA3q2yGQO21D4tTx4dXveT9VxjIHoetj-xqMvipL86HSvvy2Way4Yvxv6u-~ZAoFCHDcH4MxCHCa2tn7vY0LkFD96ZMETMYAbqSmF1GtmPYaxUaeXNspImY7n9ysYtBRCyZ1a1uhwTOtn86RBnNh-nCEl4nMc8Eet0iYBpoJOrYhOIH2NplHuuC7b7cOTCjD4uVNphMnkIw6TyjA0THryg__",
+    "releaseYear": 2019,
+    "price": 30000,
+    "engineSize": 5.5,
+    "mileage": 25000,
+    "gearbox": "auto",
+    "city": "Tokyo",
+    "datetime": "2025-04-19T20:12:33.732Z"
+  },
+  {
+    "id": 7,
+    "model": 4,
+    "image": "https://www.cnet.com/a/img/resize/d31c2002a80c48b9c913a307a9c447e605691138/hub/2018/08/04/e1c03f7e-7985-4453-bb3c-caefd18530fa/2019-bmw-m5-competition-social-media-1.jpg?auto=webp&fit=crop&height=900&width=1200",
+    "releaseYear": 2019,
+    "price": 25000,
+    "engineSize": 5.5,
+    "mileage": 90000,
+    "gearbox": "auto",
+    "city": "Tokyo",
+    "datetime": "2025-04-19T19:45:13.814Z"
+  },
+  {
+    "id": 8,
+    "model": 1,
+    "image": "https://s3-alpha-sig.figma.com/img/fddf/909e/a0c478d3a49ee12fa996253becf0c1f3?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Q17TULaeEuwa0DyB0UFgwk0uZSf2~7EVFEpRsF0Z1bVgXqJCNPhfJKhzrciOqdPXvnNeOm8XpbnZuE0oCRek-HGSdM0tgy1MQRzZmbRwRWO3HCSJHE0MWjgDcf4PC-xbZJZdAJCIn9pQAbMcBp0zcdJq2~0KoiUn2rTorL3vFnB1GqJ~QBsNGTUNLk-OdHJ7HcIRUsXTF9sWjuxVVAQJRviFLEIOK8LmmJaFgRXwSquflg0JkPPYVpYlrV3ClHtx-HfkCKZ10GZ~kyjxqGJo-scoCqEJbbRm~MXGQabiwAzaizOHcvSvW2oVQjhW8wi06WVLvpbBQZYSQZZ6Ju85Tw__",
+    "releaseYear": 2024,
+    "price": 10000,
+    "engineSize": 2.5,
+    "mileage": 120000,
+    "gearbox": "auto",
+    "city": "Ganja",
+    "datetime": "2025-04-19T19:10:45.823Z"
+  }
+]

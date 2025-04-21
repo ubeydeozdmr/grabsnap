@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Toyota",
+    "image": "/path/to/image.png"
+  },
+  {
+    "id": 17,
+    "name": "Porsche",
+    "image": "/path/to/image.png"
+  },
+  {
+    "id": 51,
+    "name": "Zeekr",
+    "image": "/path/to/image.png"
+  },
+  {
+    "id": 10,
+    "name": "BMW",
+    "image": "/path/to/image.png"
+  }
+]
