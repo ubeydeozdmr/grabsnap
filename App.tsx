@@ -1,12 +1,218 @@
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+import RoundedButton from './components/RoundedButton';
+import { Colors } from './constants/colors';
+import { Fonts } from './constants/fonts';
+import Home from './screens/Home';
+import Listed from './screens/Listed';
+import Profile from './screens/Profile';
+import SellCar from './screens/SellCar';
+import Settings from './screens/Settings';
+
+SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+type CustomTabBarProps = {
+  state: any;
+  descriptors: any;
+  navigation: any;
+};
+
+function CustomTabBar({ state, descriptors, navigation }: CustomTabBarProps) {
+  return (
+    <View style={styles.tabBarContainer}>
+      {state.routes.map((route: any, index: number) => {
+        const { options } = descriptors[route.key];
+        const label = options.tabBarLabel || options.title || route.name;
+        const isFocused = state.index === index;
+
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        if (route.name === 'SellCar') {
+          return (
+            <View key={route.key} style={styles.sellCarContainer}>
+              <Pressable
+                onPress={onPress}
+                style={({ pressed }) => [
+                  styles.sellCarButton,
+                  pressed && styles.pressed,
+                ]}
+              >
+                <RoundedButton onPress={onPress}>
+                  <MaterialIcons name="add" size={48} color="white" />
+                </RoundedButton>
+                <Text
+                  style={[styles.tabLabel, isFocused && styles.tabLabelFocused]}
+                >
+                  {label}
+                </Text>
+              </Pressable>
+            </View>
+          );
+        }
+
+        const tabItemStyle = StyleSheet.flatten([
+          styles.tabItem,
+          route.name === 'Listed' && styles.listedTab,
+          route.name === 'Profile' && styles.profileTab,
+        ]);
+
+        return (
+          <Pressable
+            key={route.key}
+            onPress={onPress}
+            style={({ pressed }) => [tabItemStyle, pressed && styles.pressed]}
+          >
+            {options.tabBarIcon &&
+              options.tabBarIcon({
+                color: isFocused ? Colors.primary : Colors.gray,
+                size: 24,
+              })}
+            <Text
+              style={[styles.tabLabel, isFocused && styles.tabLabelFocused]}
+            >
+              {label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+export function TabNavigator() {
+  return (
+    <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
+      screenOptions={{
+        headerShown: true,
+        headerTitleStyle: {
+          fontSize: 20,
+          // fontWeight: 'bold',
+          color: Colors.primary,
+          fontFamily: Fonts.Satoshi.Black,
+        },
+        headerTitleAlign: 'left',
+        headerTitleContainerStyle: {},
+        headerStyle: {
+          backgroundColor: Colors.background,
+          elevation: 0, // Removes shadow on Android
+          shadowOpacity: 0, // Removes shadow on iOS
+          borderBottomWidth: 0, // Removes border line on iOS
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="home" size={24} color={color} />
+          ),
+          title: 'HOME',
+          headerTitle: 'GRABSNAP',
+        }}
+      />
+      <Tab.Screen
+        name="Listed"
+        component={Listed}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="favorite" size={24} color={color} />
+          ),
+          title: 'LISTED',
+        }}
+      />
+      <Tab.Screen
+        name="SellCar"
+        component={SellCar}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="add" size={16} color="white" />
+          ),
+          title: 'SELL CAR',
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="person" size={24} color={color} />
+          ),
+          title: 'PROFILE',
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="settings" size={24} color={color} />
+          ),
+          title: 'SETTINGS',
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Satoshi-Regular': require('./assets/fonts/Satoshi-Regular.ttf'),
+    'Satoshi-Medium': require('./assets/fonts/Satoshi-Medium.ttf'),
+    'Satoshi-Bold': require('./assets/fonts/Satoshi-Bold.ttf'),
+    'Satoshi-Black': require('./assets/fonts/Satoshi-Black.ttf'),
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) SplashScreen.hideAsync();
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return null;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <>
       <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="TabNavigator"
+          screenOptions={{
+            headerTitle: 'GrabSnap',
+            headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
+          }}
+        >
+          <Stack.Screen
+            name="TabNavigator"
+            component={TabNavigator}
+            options={{
+              headerShown: false,
+              headerTitle: 'GrabSnap',
+            }}
+          ></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
@@ -16,5 +222,51 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  tabBarContainer: {
+    flexDirection: 'row',
+    height: 60,
+    backgroundColor: 'white',
+    borderTopWidth: 0,
+    borderTopColor: '#e0e0e0',
+    position: 'relative',
+  },
+  tabItem: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  listedTab: {
+    marginRight: 36,
+  },
+  profileTab: {
+    marginLeft: 36,
+  },
+  sellCarContainer: {
+    position: 'absolute',
+    top: -30,
+    left: '50%',
+    marginLeft: -35,
+    width: 70,
+    height: 87,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sellCarButton: {
+    width: 70,
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tabLabel: {
+    fontSize: 10,
+    color: Colors.gray,
+    marginTop: 4,
+  },
+  tabLabelFocused: {
+    color: Colors.primary,
+  },
+  pressed: {
+    opacity: 0.7,
   },
 });
