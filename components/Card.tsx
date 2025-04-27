@@ -4,13 +4,15 @@ import { formatDistanceToNow } from 'date-fns';
 
 import { Car } from '../api/data';
 import { Fonts } from '../constants/fonts';
+import { normalize } from '../utils/normalize';
 
 type CardProps = {
   item: Car;
   index: number;
+  handler: () => void;
 };
 
-export default function Card({ item, index }: CardProps) {
+export default function Card({ item, index, handler }: CardProps) {
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString);
     const time = date.toLocaleTimeString([], {
@@ -24,12 +26,13 @@ export default function Card({ item, index }: CardProps) {
   };
 
   const onPressHandler = (item: Car) => {
-    Alert.alert(
+    handler();
+    /*     Alert.alert(
       `${item.model.brand.name} ${item.model.name}, ${item.releaseYear}`,
-      `${item.engineSize}L | ${item.mileage.toLocaleString()}km | ${
-        item.gearbox.at(0)?.toLocaleUpperCase() + item.gearbox.slice(1)
-      } | ${item.city}, ${formatDateTime(item.datetime)}`,
-    );
+      `${item.engineSize}L | ${item.mileage.toLocaleString()}km | ${normalize(
+        item.gearbox,
+      )} | ${item.city}, ${formatDateTime(item.datetime)}`,
+    ); */
   };
 
   return (
@@ -55,7 +58,7 @@ export default function Card({ item, index }: CardProps) {
         <Text style={styles.price}>${item.price.toLocaleString()}</Text>
         <Text style={styles.stats}>
           {item.engineSize}L | {item.mileage.toLocaleString()}km |{' '}
-          {item.gearbox.at(0)?.toLocaleUpperCase() + item.gearbox.slice(1)}
+          {normalize(item.gearbox)}
         </Text>
         <Text style={styles.datetime}>
           {item.city}, {formatDateTime(item.datetime)}
