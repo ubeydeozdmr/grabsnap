@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.primary,
     borderRadius: 100,
-    padding: 4,
+    padding: 8,
   },
   pressed: {
     opacity: 0.7,
