@@ -8,9 +8,11 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { Car } from './api/data';
 import RoundedButton from './components/RoundedButton';
 import { Colors } from './constants/colors';
 import { Fonts } from './constants/fonts';
+import CarDetails from './screens/CarDetails';
 import Home from './screens/Home';
 import Listed from './screens/Listed';
 import Profile from './screens/Profile';
@@ -19,7 +21,12 @@ import Settings from './screens/Settings';
 
 SplashScreen.preventAutoHideAsync();
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  TabNavigator: undefined;
+  CarDetails: { car: Car };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 type CustomTabBarProps = {
@@ -148,7 +155,7 @@ export function TabNavigator() {
         component={SellCar}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="add" size={16} color="white" />
+            <MaterialIcons name="add" size={24} color="white" />
           ),
           title: 'SELL CAR',
         }}
@@ -208,6 +215,18 @@ export default function App() {
             options={{
               headerShown: false,
               headerTitle: 'GrabSnap',
+            }}
+          ></Stack.Screen>
+          <Stack.Screen
+            name="CarDetails"
+            component={CarDetails}
+            options={{
+              headerShown: true,
+              headerTitle: 'Car Details',
+              headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
+              headerStyle: {
+                backgroundColor: Colors.background,
+              },
             }}
           ></Stack.Screen>
         </Stack.Navigator>
