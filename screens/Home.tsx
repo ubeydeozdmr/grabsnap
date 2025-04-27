@@ -1,8 +1,8 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -13,10 +13,28 @@ import Card from '../components/Card';
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
 
-export default function Home(): JSX.Element {
+type RootStackParamList = {
+  TabNavigator: undefined;
+  CarDetails: { car: Car };
+};
+
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'CarDetails'
+>;
+
+type Props = {
+  navigation: HomeScreenNavigationProp;
+};
+
+export default function Home({ navigation }: Props): JSX.Element {
   const [data, setData] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  function tileOnPressHandler(car: Car) {
+    navigation.navigate('CarDetails', { car });
+  }
 
   useEffect(() => {
     async function setState() {
@@ -60,7 +78,13 @@ export default function Home(): JSX.Element {
         numColumns={2}
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.listContent}
-        renderItem={({ item, index }) => <Card item={item} index={index} />}
+        renderItem={({ item, index }) => (
+          <Card
+            item={item}
+            index={index}
+            handler={() => tileOnPressHandler(item)}
+          />
+        )}
       />
     </View>
   );
@@ -75,7 +99,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    ...(Platform.OS === 'ios' && { fontWeight: '700' }),
+    /* fontWeight: 700, */
     marginBottom: 16,
     fontFamily: Fonts.Satoshi.Bold,
   },
