@@ -1,6 +1,6 @@
 import brands from '../data/brands.json';
-import models from '../data/models.json';
 import cars from '../data/cars.json';
+import models from '../data/models.json';
 import { randomDelay } from './utils';
 
 type RawBrand = {
@@ -23,8 +23,14 @@ type RawCar = {
   price: number;
   engineSize: number;
   mileage: number;
-  gearbox: string;
+  gearbox: 'auto' | 'manual';
   city: string;
+  power: number;
+  fuel: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
+  bodyType: 'SUV' | 'compact-SUV' | 'sedan';
+  color: string;
+  condition: 'perfect' | 'good' | 'bad';
+  isNew: boolean;
   datetime: string;
 };
 
@@ -44,8 +50,14 @@ export type Car = {
   price: number;
   engineSize: number;
   mileage: number;
-  gearbox: string;
+  gearbox: 'auto' | 'manual';
   city: string;
+  power: number;
+  fuel: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
+  bodyType: 'SUV' | 'compact-SUV' | 'sedan';
+  color: string;
+  condition: 'perfect' | 'good' | 'bad';
+  isNew: boolean;
   datetime: string;
 };
 
@@ -108,6 +120,12 @@ export async function getCars(): Promise<Car[]> {
         mileage: car.mileage,
         gearbox: car.gearbox,
         city: car.city,
+        power: car.power,
+        fuel: car.fuel,
+        bodyType: car.bodyType,
+        color: car.color,
+        condition: car.condition,
+        isNew: car.isNew,
         datetime: car.datetime,
         model,
       };
@@ -129,6 +147,12 @@ export async function getCarsFromModel(modelId: number): Promise<Car[]> {
       mileage: car.mileage,
       gearbox: car.gearbox,
       city: car.city,
+      power: car.power,
+      fuel: car.fuel,
+      bodyType: car.bodyType,
+      color: car.color,
+      condition: car.condition,
+      isNew: car.isNew,
       datetime: car.datetime,
       model,
     }));
@@ -147,6 +171,12 @@ export async function getCarById(id: number): Promise<Car> {
     mileage: car.mileage,
     gearbox: car.gearbox,
     city: car.city,
+    power: car.power,
+    fuel: car.fuel,
+    bodyType: car.bodyType,
+    color: car.color,
+    condition: car.condition,
+    isNew: car.isNew,
     datetime: car.datetime,
   };
 }
