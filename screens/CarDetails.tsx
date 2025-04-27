@@ -2,7 +2,14 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import { Car } from '../api/data';
 import Line from '../components/Line';
@@ -95,6 +102,7 @@ export default function CarDetails({ route }: Props): JSX.Element {
           </View>
         </View>
         <Line />
+        {/* NOTE: JSON/TypeScript integration will be implemented later */}
         <Text style={styles.addFeatTitle}>Additional Features</Text>
         <View style={styles.addFeatures}>
           <Text style={styles.feature}>CarPlay</Text>
@@ -102,6 +110,29 @@ export default function CarDetails({ route }: Props): JSX.Element {
           <Text style={styles.feature}>Panoramic Roof</Text>
         </View>
         <Line />
+        <View style={styles.aligner}>
+          <View>
+            <Text style={styles.username}>Fujiwara</Text>
+            <Text style={styles.phoneNumber}>+81 123 4556 78 81</Text>
+          </View>
+          <View>
+            <MaterialIcons name="person-outline" size={40} color="black" />
+          </View>
+        </View>
+        <Line />
+        <Pressable
+          style={({ pressed }) => [
+            styles.reportButton,
+            pressed && styles.pressed,
+          ]}
+        >
+          <MaterialIcons
+            name="warning-amber"
+            size={40}
+            color={Colors.primary}
+          />
+          <Text style={styles.reportButtonText}>Report List</Text>
+        </Pressable>
       </View>
     </ScrollView>
   );
@@ -181,5 +212,27 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     backgroundColor: Colors.background,
     borderRadius: 1000,
+    fontFamily: Fonts.Satoshi.Medium,
+  },
+  username: {
+    marginBottom: 4,
+    fontFamily: Fonts.Satoshi.Medium,
+  },
+  phoneNumber: {
+    color: Colors.accent,
+    fontFamily: Fonts.Satoshi.Medium,
+  },
+  reportButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  reportButtonText: {
+    color: Colors.primary,
+    fontFamily: Fonts.Satoshi.Medium,
+    marginLeft: 8,
+  },
+  pressed: {
+    opacity: 0.7,
   },
 });
