@@ -35,31 +35,8 @@ type RawCar = {
 };
 
 export type Brand = RawBrand;
-
-export type Model = {
-  id: number;
-  brand: Brand;
-  name: string;
-};
-
-export type Car = {
-  id: number;
-  model: Model;
-  image: string;
-  releaseYear: number;
-  price: number;
-  engineSize: number;
-  mileage: number;
-  gearbox: 'auto' | 'manual';
-  city: string;
-  power: number;
-  fuel: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
-  bodyType: 'SUV' | 'compact-SUV' | 'sedan';
-  color: string;
-  condition: 'perfect' | 'good' | 'bad';
-  isNew: boolean;
-  datetime: string;
-};
+export type Model = Omit<RawModel, 'brand'> & { brand: Brand };
+export type Car = Omit<RawCar, 'model'> & { model: Model };
 
 const _brands: Brand[] = brands as Brand[];
 const _models: RawModel[] = models as RawModel[];
