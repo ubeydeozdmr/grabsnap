@@ -70,6 +70,17 @@ export default function Home({ navigation }: Props): JSX.Element {
     );
   }
 
+  if (data.length === 0) {
+    return (
+      <View style={styles.container}>
+        <Text>
+          Wow, there's nothing to show! You may press "Sell Car" button to add
+          the first car!
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>New Lists</Text>
@@ -113,5 +124,6 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 16,
     textAlign: 'center',
+    fontFamily: Fonts.Satoshi.Black,
   },
 });
