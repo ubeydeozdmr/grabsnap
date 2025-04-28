@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "phone": "905321110011",
+    "email": "adolfmusk@grabsnap.com",
+    "password": "adolfmusk1",
+    "fullName": "Adolf Musk"
+  },
+  {
+    "id": 2,
+    "phone": "905322220022",
+    "email": "jerryseinfield@grabsnap.com",
+    "password": "jerryseinfield2",
+    "fullName": "Jerry Seinfield"
+  },
+  {
+    "id": 3,
+    "phone": "905323330033",
+    "email": "johnwick@grabsnap.com",
+    "password": "johnwick3",
+    "fullName": "John Wick"
+  },
+  {
+    "id": 4,
+    "phone": "905324440044",
+    "email": "skywalker@grabsnap.com",
+    "password": "skywalker4",
+    "fullName": "Anakin Skywalker"
+  },
+  {
+    "id": 5,
+    "phone": "905325550055",
+    "email": "clarkson@grabsnap.com",
+    "password": "clarkson5",
+    "fullName": "May Clarkson"
+  },
+  {
+    "id": 6,
+    "phone": "905326660066",
+    "email": "yoshidokido@grabsnap.com",
+    "password": "yoshido6",
+    "fullName": "Yoshido Okido"
+  },
+  {
+    "id": 7,
+    "phone": "905327770077",
+    "email": "jasonstar@grabsnap.com",
+    "password": "jasonstar7",
+    "fullName": "Jason Star"
+  },
+  {
+    "id": 8,
+    "phone": "905328880088",
+    "email": "cgriffin@gmail.com",
+    "password": "cgriffin8",
+    "fullName": "Chris Griffin"
+  },
+  {
+    "id": 9,
+    "phone": "905329990099",
+    "email": "jopeter@gmail.com",
+    "password": "jopeter9",
+    "fullName": "Jordan Peter"
+  },
+  {
+    "id": 10,
+    "phone": "905320000000",
+    "email": "markberg@gmail.com",
+    "password": "markberg10",
+    "fullName": "Mark Notberg"
+  },
+  {
+    "id": 11,
+    "phone": "905535720323",
+    "email": "ubeydeozdmr@gmail.com",
+    "password": "ubeyde.me11",
+    "fullName": "Ubeyde Emir Özdemir"
+  }
+]
