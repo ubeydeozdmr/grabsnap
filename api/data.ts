@@ -1,9 +1,9 @@
-import brands from '../data/brands.json';
 import cars from '../data/cars.json';
+import makes from '../data/makes.json';
 import models from '../data/models.json';
 import { randomDelay } from './utils';
 
-type RawBrand = {
+type RawMake = {
   id: number;
   name: string;
   image: string;
@@ -11,7 +11,7 @@ type RawBrand = {
 
 type RawModel = {
   id: number;
-  brand: number;
+  make: number;
   name: string;
 };
 
@@ -34,22 +34,22 @@ type RawCar = {
   datetime: string;
 };
 
-export type Brand = RawBrand;
-export type Model = Omit<RawModel, 'brand'> & { brand: Brand };
+export type Make = RawMake;
+export type Model = Omit<RawModel, 'make'> & { make: Make };
 export type Car = Omit<RawCar, 'model'> & { model: Model };
 
-const _brands: Brand[] = brands as Brand[];
+const _makes: Make[] = makes as Make[];
 const _models: RawModel[] = models as RawModel[];
 const _cars: RawCar[] = cars as RawCar[];
 
-export async function getBrands(): Promise<Brand[]> {
+export async function getMakes(): Promise<Make[]> {
   await randomDelay();
-  return _brands;
+  return _makes;
 }
 
-export async function getBrandById(id: number): Promise<Brand> {
+export async function getMakeById(id: number): Promise<Make> {
   await randomDelay();
-  return _brands.find((brand) => brand.id === id)!;
+  return _makes.find((make) => make.id === id)!;
 }
 
 export async function getModels(): Promise<Model[]> {
@@ -57,30 +57,30 @@ export async function getModels(): Promise<Model[]> {
   const models = await Promise.all(
     _models.map(async (model) => ({
       ...model,
-      brand: await getBrandById(model.brand),
+      make: await getMakeById(model.make),
     })),
   );
   return models;
 }
 
-export async function getModelsFromBrand(brandId: number): Promise<Model[]> {
-  const brand = await getBrandById(brandId);
+export async function getModelsFromMake(makeId: number): Promise<Model[]> {
+  const make = await getMakeById(makeId);
   return _models
-    .filter((model) => model.brand === brandId)
+    .filter((model) => model.make === makeId)
     .map((model) => ({
       id: model.id,
       name: model.name,
-      brand,
+      make,
     }));
 }
 
 export async function getModelById(id: number): Promise<Model> {
   const model = _models.find((model) => model.id === id)!;
-  const brand = await getBrandById(model.brand);
+  const make = await getMakeById(model.make);
   return {
     id: model.id,
     name: model.name,
-    brand,
+    make,
   };
 }
 

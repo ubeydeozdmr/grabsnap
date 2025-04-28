@@ -1,6 +1,6 @@
-import React from 'react';
-import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { formatDistanceToNow } from 'date-fns';
+import React from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Car } from '../api/data';
 import { Fonts } from '../constants/fonts';
@@ -53,7 +53,7 @@ export default function Card({ item, index, handler }: CardProps) {
       />
       <View style={styles.content}>
         <Text style={styles.title}>
-          {item.model.brand.name} {item.model.name}, {item.releaseYear}
+          {item.model.make.name} {item.model.name}, {item.releaseYear}
         </Text>
         <Text style={styles.price}>${item.price.toLocaleString()}</Text>
         <Text style={styles.stats}>

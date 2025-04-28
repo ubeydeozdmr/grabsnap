@@ -40,7 +40,7 @@ export default function CarDetails({ route }: Props): JSX.Element {
         <View style={styles.aligner}>
           <View>
             <Text style={styles.title}>
-              {car.model.brand.name} {car.model.name}, {car.releaseYear}
+              {car.model.make.name} {car.model.name}, {car.releaseYear}
             </Text>
             <Text style={styles.price}>${car.price.toLocaleString()}</Text>
           </View>
