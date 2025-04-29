@@ -2,6 +2,7 @@
   {
     "id": 11200100001,
     "model": 112001,
+    "seller": 1,
     "image": "https://ecofactortech.com/wp-content/uploads/2024/12/tesla-model-s-p100d-vrazhayuchi-harakterystyky-elektromobilya.jpg",
     "description": "Experience the ultimate electric performance with Tesla Model S Plaid. Nearly brand new with insane acceleration.",
     "releaseYear": 2022,
@@ -17,18 +18,12 @@
     "condition": "excellent",
     "isNew": false,
     "datetime": "2025-04-19T21:46:18.754Z",
-    "addFeats": [
-      "Autopilot",
-      "Premium Connectivity",
-      "Heated Seats",
-      "CarPlay"
-    ],
-    "sellerName": "Adolf Musk",
-    "sellerNum": "+81 295 000 12"
+    "addFeats": ["Autopilot", "Premium Connectivity", "Heated Seats", "CarPlay"]
   },
   {
     "id": 11700100001,
     "model": 117001,
+    "seller": 2,
     "image": "https://vehicle-images.dealerinspire.com/e99f-110010273/WP0CB2A90HS154790/f4358e919b31cc506c5eaa268b443d25.jpg",
     "description": "Iconic Porsche 911 Carrera in pristine condition. Sport Chrono package included!",
     "releaseYear": 2019,
@@ -44,13 +39,12 @@
     "condition": "excellent",
     "isNew": false,
     "datetime": "2025-04-19T21:46:18.754Z",
-    "addFeats": ["BOSE Audio", "Sport Chrono Package", "Apple CarPlay"],
-    "sellerName": "Jerry Seinfeld",
-    "sellerNum": "+81 295 000 12"
+    "addFeats": ["BOSE Audio", "Sport Chrono Package", "Apple CarPlay"]
   },
   {
     "id": 10300100001,
     "model": 103001,
+    "seller": 3,
     "image": "https://i.pinimg.com/736x/c1/c8/93/c1c8930bf894edd1665fdd311b6f9a59.jpg",
     "description": "A beautifully restored 1967 Ford Mustang GT. True American muscle at its best!",
     "releaseYear": 1967,
@@ -66,13 +60,12 @@
     "condition": "excellent",
     "isNew": false,
     "datetime": "2025-04-19T21:46:18.754Z",
-    "addFeats": ["Vintage Radio", "Leather Seats", "Custom Exhaust"],
-    "sellerName": "John Wick",
-    "sellerNum": "+81 295 000 12"
+    "addFeats": ["Vintage Radio", "Leather Seats", "Custom Exhaust"]
   },
   {
     "id": 11000100001,
     "model": 110001,
+    "seller": 4,
     "image": "https://vehicle-direct.ca/wp-content/uploads/2023/08/IMG_3084-scaled.jpeg",
     "description": "High-performance BMW X5 M with all the luxury and raw power you need.",
     "releaseYear": 2021,
@@ -92,13 +85,12 @@
       "Harman Kardon Sound",
       "Gesture Control",
       "Heated Steering Wheel"
-    ],
-    "sellerName": "Anakin Skywalker",
-    "sellerNum": "+81 295 000 12"
+    ]
   },
   {
     "id": 15100100001,
     "model": 151001,
+    "seller": 5,
     "image": "https://i0.wp.com/www.schmitt.com/wp-content/uploads/2021/08/407660-2013-FERRARI-458-ITALIA-001.jpeg?w=1170&ssl=1",
     "description": "The thrilling Ferrari 458 Italia. Legendary performance and beauty combined.",
     "releaseYear": 2015,
@@ -118,13 +110,12 @@
       "Carbon Fiber Interior",
       "Launch Control",
       "Premium Sound System"
-    ],
-    "sellerName": "May Clarkson",
-    "sellerNum": "+81 295 000 12"
+    ]
   },
   {
     "id": 10100100001,
     "model": 101001,
+    "seller": 6,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaPpJ0ts6UeMS3oC55Y7bIbv0d54GO0CsxA&s",
     "description": "Reliable Toyota Corolla with great fuel economy and modern tech.",
     "releaseYear": 2020,
@@ -140,13 +131,12 @@
     "condition": "good",
     "isNew": false,
     "datetime": "2025-04-19T21:46:18.754Z",
-    "addFeats": ["Adaptive Cruise Control", "CarPlay", "Lane Keep Assist"],
-    "sellerName": "Yoshido Okido",
-    "sellerNum": "+81 295 000 12"
+    "addFeats": ["Adaptive Cruise Control", "CarPlay", "Lane Keep Assist"]
   },
   {
     "id": 15200100001,
     "model": 152001,
+    "seller": 7,
     "image": "https://images.carstory.com/8297566746842543170/1/t/686x-?format=webp",
     "description": "Insane Lamborghini Aventador SVJ. Pure drama and speed in a street-legal race car.",
     "releaseYear": 2020,
@@ -166,13 +156,12 @@
       "Carbon Ceramic Brakes",
       "Navigation System",
       "Premium Sound System"
-    ],
-    "sellerName": "Jason Star",
-    "sellerNum": "+81 295 000 12"
+    ]
   },
   {
     "id": 10700100001,
     "model": 107001,
+    "seller": 8,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlBaOh8B62kvXuhng7kKJ4ma2M3jqwSgjDmw&s",
     "description": "Monster muscle with supercharged power. Camaro ZL1 with track package.",
     "releaseYear": 2018,
@@ -180,6 +169,7 @@
     "engineSize": 2.5,
     "mileage": 50000,
     "gearbox": "manual",
+    "city": "Gothenburg",
     "power": 650,
     "fuel": "gasoline",
     "bodyType": "coupe",
@@ -187,13 +177,12 @@
     "condition": "good",
     "isNew": false,
     "datetime": "2025-04-19T21:46:18.754Z",
-    "addFeats": ["Performance Data Recorder", "Recaro Seats", "HUD Display"],
-    "sellerName": "Chris Griffin",
-    "sellerNum": "+81 295 000 12"
+    "addFeats": ["Performance Data Recorder", "Recaro Seats", "HUD Display"]
   },
   {
     "id": 11100100001,
     "model": 111001,
+    "seller": 9,
     "image": "https://listers.co.uk/img/v/used/largest/422649/2025-audi-a8-diesel-saloon-50-tdi-quattro-black-edition-4dr-tiptronic-in-daytona-grey-pearl-effect-at-coventry-audi.jpg",
     "description": "Top-tier luxury Audi A8 L. Smooth, silent, and packed with tech.",
     "releaseYear": 2021,
@@ -201,6 +190,7 @@
     "engineSize": 2.5,
     "mileage": 50000,
     "gearbox": "automatic",
+    "city": "Baku",
     "power": 453,
     "fuel": "gasoline",
     "bodyType": "sedan",
@@ -212,13 +202,12 @@
       "Matrix LED Headlights",
       "Bang & Olufsen Audio",
       "Massage Seats"
-    ],
-    "sellerName": "Jordan Peter",
-    "sellerNum": "+81 295 000 12"
+    ]
   },
   {
     "id": 10200100001,
     "model": 102001,
+    "seller": 10,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRYKFSORbySjnZFkioa9Au6MCDb61QEMguwQ&s",
     "description": "Fun-to-drive Golf GTI with manual gearbox. Practical yet sporty!",
     "releaseYear": 2022,
@@ -226,6 +215,7 @@
     "engineSize": 2.5,
     "mileage": 50000,
     "gearbox": "manual",
+    "city": "Istanbul",
     "power": 241,
     "fuel": "gasoline",
     "bodyType": "hatchback",
@@ -233,8 +223,6 @@
     "condition": "excellent",
     "isNew": true,
     "datetime": "2025-04-19T21:46:18.754Z",
-    "addFeats": ["CarPlay", "Wireless Charging", "Digital Cockpit"],
-    "sellerName": "Mark Notberg",
-    "sellerNum": "+81 295 000 12"
+    "addFeats": ["CarPlay", "Wireless Charging", "Digital Cockpit"]
   }
 ]
