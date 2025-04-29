@@ -13,11 +13,11 @@ import {
 
 import { Car } from '../api/data';
 import Line from '../components/Line';
+import RoundedButton from '../components/RoundedButton';
 import Tile from '../components/Tile';
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
 import { normalize } from '../utils/normalize';
-import RoundedButton from '../components/RoundedButton';
 
 type RootStackParamList = {
   CarDetails: { car: Car };
@@ -104,16 +104,18 @@ export default function CarDetails({ route }: Props): JSX.Element {
         <Line />
         {/* NOTE: JSON/TypeScript integration will be implemented later */}
         <Text style={styles.addFeatTitle}>Additional Features</Text>
-        <View style={styles.addFeatures}>
-          <Text style={styles.feature}>CarPlay</Text>
-          <Text style={styles.feature}>Bose Audio</Text>
-          <Text style={styles.feature}>Panoramic Roof</Text>
-        </View>
+        <ScrollView style={styles.addFeatures} horizontal={true}>
+          {car.addFeats.map((feat) => (
+            <Text key={feat} style={styles.feature}>
+              {normalize(feat)}
+            </Text>
+          ))}
+        </ScrollView>
         <Line />
         <View style={styles.aligner}>
           <View>
-            <Text style={styles.username}>Fujiwara</Text>
-            <Text style={styles.phoneNumber}>+81 123 4556 78 81</Text>
+            <Text style={styles.username}>{car.seller.fullName}</Text>
+            <Text style={styles.phoneNumber}>{car.seller.phone}</Text>
           </View>
           <View>
             <MaterialIcons name="person-outline" size={40} color="black" />
