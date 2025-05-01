@@ -25,7 +25,7 @@ type RootStackParamList = {
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CarDetails'>;
 
-export default function CarDetails({ route }: Props): JSX.Element {
+export default function CarDetails({ route }: Props) {
   const [favorite, setFavorite] = useState(false);
   const { car } = route.params;
 
