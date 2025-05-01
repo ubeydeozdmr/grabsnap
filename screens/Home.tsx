@@ -27,7 +27,7 @@ type Props = {
   navigation: HomeScreenNavigationProp;
 };
 
-export default function Home({ navigation }: Props): JSX.Element {
+export default function Home({ navigation }: Props) {
   const [data, setData] = useState<Car[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
