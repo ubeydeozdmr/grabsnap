@@ -35,7 +35,10 @@ export default function CarDetails({ route }: Props) {
 
   return (
     <>
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 80 }}
+      >
         <Image source={{ uri: car.image }} style={styles.image} />
         <View style={styles.content}>
           <View style={styles.aligner}>
@@ -46,7 +49,10 @@ export default function CarDetails({ route }: Props) {
               <Text style={styles.price}>${car.price.toLocaleString()}</Text>
             </View>
             <View>
-              <RoundedButton onPress={onPressHandler}>
+              <RoundedButton
+                onPress={onPressHandler}
+                accessibilityLabel="Toggle Favorite"
+              >
                 {favorite ? (
                   <MaterialIcons name="favorite" size={32} color="white" />
                 ) : (
@@ -117,10 +123,9 @@ export default function CarDetails({ route }: Props) {
             </View>
           </View>
           <Line />
-          {/* NOTE: JSON/TypeScript integration will be implemented later */}
           <Text style={styles.addFeatTitle}>Additional Features</Text>
           <ScrollView style={styles.addFeatures} horizontal={true}>
-            {car.addFeats.map((feat) => (
+            {car.addFeats?.map((feat) => (
               <Text key={feat} style={styles.feature}>
                 {normalize(feat)}
               </Text>
@@ -153,21 +158,7 @@ export default function CarDetails({ route }: Props) {
         </View>
       </ScrollView>
       <Pressable
-        style={({ pressed }) => [
-          {
-            /* NOTE: WORK IN PROGRESS */
-            /*           position: 'absolute',
-          bottom: 8, */
-            /*             marginBottom: 8,
-            marginHorizontal: 8,
-            borderRadius: 8, */
-            padding: 12,
-            width: 'auto',
-            backgroundColor: Colors.accent,
-            alignItems: 'center',
-          },
-          pressed && { opacity: 0.7 },
-        ]}
+        style={({ pressed }) => [styles.ctsButton, pressed && styles.pressed]}
       >
         <Text style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}>
           CALL THE SELLER
@@ -270,6 +261,16 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontFamily: Fonts.Satoshi.Medium,
     marginLeft: 8,
+  },
+  ctsButton: {
+    position: 'absolute',
+    bottom: 16,
+    left: 16,
+    right: 16,
+    padding: 12,
+    borderRadius: 8,
+    backgroundColor: Colors.accent,
+    alignItems: 'center',
   },
   pressed: {
     opacity: 0.7,
