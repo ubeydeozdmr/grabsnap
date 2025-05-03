@@ -6,7 +6,9 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View, Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Car } from './api/data';
 import RoundedButton from './components/RoundedButton';
@@ -36,8 +38,18 @@ type CustomTabBarProps = {
 };
 
 function CustomTabBar({ state, descriptors, navigation }: CustomTabBarProps) {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.tabBarContainer}>
+    <View
+      style={[
+        styles.tabBarContainer,
+        {
+          height: 60 + insets.bottom,
+          paddingBottom: insets.bottom,
+        },
+      ]}
+    >
       {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const label = options.tabBarLabel || options.title || route.name;
@@ -115,7 +127,6 @@ export function TabNavigator() {
         headerShown: true,
         headerTitleStyle: {
           fontSize: 20,
-          // fontWeight: 'bold',
           color: Colors.primary,
           fontFamily: Fonts.Satoshi.Black,
         },
@@ -123,9 +134,9 @@ export function TabNavigator() {
         headerTitleContainerStyle: {},
         headerStyle: {
           backgroundColor: Colors.background,
-          elevation: 0, // Removes shadow on Android
-          shadowOpacity: 0, // Removes shadow on iOS
-          borderBottomWidth: 0, // Removes border line on iOS
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomWidth: 0,
         },
       }}
     >
@@ -201,36 +212,38 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="TabNavigator"
-          screenOptions={{
-            headerTitle: 'GrabSnap',
-            headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
-          }}
-        >
-          <Stack.Screen
-            name="TabNavigator"
-            component={TabNavigator}
-            options={{
-              headerShown: false,
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="TabNavigator"
+            screenOptions={{
               headerTitle: 'GrabSnap',
-            }}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="CarDetails"
-            component={CarDetails}
-            options={{
-              headerShown: true,
-              headerTitle: 'Car Details',
               headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
-              headerStyle: {
-                backgroundColor: Colors.background,
-              },
             }}
-          ></Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="TabNavigator"
+              component={TabNavigator}
+              options={{
+                headerShown: false,
+                headerTitle: 'GrabSnap',
+              }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="CarDetails"
+              component={CarDetails}
+              options={{
+                headerShown: true,
+                headerTitle: 'Car Details',
+                headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
+                headerStyle: {
+                  backgroundColor: Colors.background,
+                },
+              }}
+            ></Stack.Screen>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </>
   );
 }
@@ -244,10 +257,8 @@ const styles = StyleSheet.create({
   },
   tabBarContainer: {
     flexDirection: 'row',
-    height: 60,
     backgroundColor: 'white',
     borderTopWidth: 0,
-    borderTopColor: '#e0e0e0',
     position: 'relative',
   },
   tabItem: {
