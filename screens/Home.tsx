@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
 import {
@@ -10,27 +11,32 @@ import {
 
 import { getCars, type Car } from '../api/data';
 import Card from '../components/Card';
+import GroupedButton from '../components/GroupedButton';
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 type RootStackParamList = {
   TabNavigator: undefined;
   CarDetails: { car: Car };
+  Makes: undefined;
+  Models: { makeId: number };
 };
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'CarDetails'
->;
-
-type Props = {
-  navigation: HomeScreenNavigationProp;
-};
-
-export default function Home({ navigation }: Props) {
+export default function Home() {
+  const navigation = useNavigation<NavigationProp>();
   const [data, setData] = useState<Car[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  function makeButtonOnPressHandler() {
+    navigation.navigate('Makes');
+  }
+
+  function modelButtonOnPressHandler() {
+    navigation.navigate('Models', { makeId: 101 });
+  }
 
   function tileOnPressHandler(car: Car) {
     navigation.navigate('CarDetails', { car });
@@ -83,12 +89,19 @@ export default function Home({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
+      <GroupedButton isFirst onPress={makeButtonOnPressHandler}>
+        Make
+      </GroupedButton>
+      <GroupedButton isLast onPress={modelButtonOnPressHandler}>
+        Model
+      </GroupedButton>
       <Text style={styles.title}>New Lists</Text>
       <FlatList
         data={data}
         numColumns={2}
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.listContent}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item, index }) => (
           <Card
             item={item}
@@ -110,8 +123,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    /* fontWeight: 700, */
-    marginBottom: 16,
+    marginVertical: 16,
     fontFamily: Fonts.Satoshi.Bold,
   },
   listContent: {
