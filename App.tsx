@@ -35,6 +35,7 @@ type RootStackParamList = {
   CarDetails: { car: Car };
   Makes: undefined;
   Models: { makeId: number };
+  SellCar: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -70,29 +71,6 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
           }
         };
 
-        if (route.name === 'SellCar') {
-          return (
-            <View key={route.key} style={styles.sellCarContainer}>
-              <Pressable
-                onPress={onPress}
-                style={({ pressed }) => [
-                  styles.sellCarButton,
-                  pressed && styles.pressed,
-                ]}
-              >
-                <RoundedButton onPress={onPress}>
-                  <MaterialIcons name="add" size={48} color="white" />
-                </RoundedButton>
-                <Text
-                  style={[styles.tabLabel, isFocused && styles.tabLabelFocused]}
-                >
-                  {label}
-                </Text>
-              </Pressable>
-            </View>
-          );
-        }
-
         const tabItemStyle = StyleSheet.flatten([
           styles.tabItem,
           route.name === 'Listed' && styles.listedTab,
@@ -119,6 +97,20 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
           </Pressable>
         );
       })}
+      <View style={styles.sellCarContainer}>
+        <Pressable
+          onPress={() => navigation.navigate('SellCar')}
+          style={({ pressed }) => [
+            styles.sellCarButton,
+            pressed && styles.pressed,
+          ]}
+        >
+          <RoundedButton onPress={() => navigation.navigate('SellCar')}>
+            <MaterialIcons name="add" size={48} color="white" />
+          </RoundedButton>
+          <Text style={styles.tabLabel}>SELL CAR</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -163,16 +155,6 @@ export function TabNavigator() {
             <MaterialIcons name="favorite" size={24} color={color} />
           ),
           title: 'LISTED',
-        }}
-      />
-      <Tab.Screen
-        name="SellCar"
-        component={SellCar}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="add" size={24} color="white" />
-          ),
-          title: 'SELL CAR',
         }}
       />
       <Tab.Screen
@@ -256,6 +238,14 @@ export default function App() {
               options={{
                 headerShown: true,
                 headerTitle: 'Models',
+              }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="SellCar"
+              component={SellCar}
+              options={{
+                headerShown: true,
+                headerTitle: 'Sell Car',
               }}
             ></Stack.Screen>
           </Stack.Navigator>
