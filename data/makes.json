@@ -2,51 +2,51 @@
   {
     "id": 101,
     "name": "Toyota",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/6b49/14a5/37bde04e6950b11b5033cab4284baa4a?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=E9Qa3dcvAFuwpbu61KBA5eQgetErmdGIyce7eildH5jkfRYEavTgzbrtIbk7nmSuuuX8~drPIanJ7oOARe3HFUVa2yV545tHF6uHx3Ofd0NQAdduimSovcERMrruCwZLEfqY-OPwHoT~rvGRZAhZZThUvjFXebCDUs-Rekp7WNGdKTELa7EcpA5zhGAqehlT~7gmmvYBKVHhFQwvjT7HDnI7UAtAWqh4g6fCoae1bKhwdXwmGkpkCdvtFe4wvTU5JTFffb9rd32QnJjBrspmXB3Xgy8UEAqq3QJhW-u6TmswPnMoK5w1gWnVOKJVAdAXNtpXR-yIyBJSqAdqN89KIA__"
   },
   {
     "id": 102,
     "name": "Volkswagen",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/47cb/3c44/9034ebaf7d761226e2557d7d842814c7?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mwMdEl2mdlSRoAvkD2D8Up6WIaEf--7AJElT0VUNE1EM6NiqJmW5YBagK3evxvfzGEq~IFvYYCa37ryvsBuJnTqAv1ep3jWs8ewQKWo4Zq47ch7NjPcpzYSv6AketIyTYeHeFLZiXbPcGPMdkYWK-cCCDeh3AtnVzRJI5FaFMYXSGkSRIYqg3dpAV-NyMDtiFKIkn7CNW3dVgDCb-Se9uzh~J92Sm~LA-~sCDbootKdqlj3UG-xRN4MEaze6yM0M~EqM1yTgpEX2LOQ2dL9wm4HL6v9E63X9dY46YP0nFVLs90psLvDPNLs-4vvZNQtuRvBYvwwyqel4HJeRPCXepg__"
   },
   {
     "id": 103,
     "name": "Ford",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/5553/e75e/c996159dfa3047808fbb9df122978743?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VZAYLLfHkgFVBmQqu-VRPBuKBPAF2~EWvSafWCcup2dmAMI1nN-jNAdin333JRuCMSzdXffuQ6s7Rk9mL6r1v~zigHkFjXclMeWNA9SXwCy5g4VT7f7pXW~CFtW~Ao4pDyAk4oMcIXNTMq7weiIkzpLRWYO1v72Hy-vfkmx22ebKVZEQvdb3FYjniPzkKjiqii7t9p0PvJgH4vJWve2181TI0yO3LjwfitwNrwFuldlBHEm1vs3pFkm3kqqRKAoCWDyiXdRCE1vFeDuOBngIL5f25oDxvFnc8nL2PzrxhU~UF-4n6u-ndycCJp0b3U0BtWcUUqcCG~ej3kLfncCZKA__"
   },
   {
     "id": 107,
     "name": "Chevrolet",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/d825/3c22/dfc085060146a798910a196caa6c9473?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=gDLUH71jaqnmCmftplk1OZ-FicmR6ClcKE8Gg9GaQnD1oGKPqHNRrvSt~2rz8CVQ5Y1cNZ0dDQ5LtcuEmanw5VnEgggEZQdkZsR3QJixYnWfSisZRY5EaMb0qU7Un4x3WhE7dZ355NhKn8Ep1-D4RQzUcVtuGFTE2jINNVaF7sSEU1Ghg~~0~AVybvh2ZAO6nw9X1Z2NRe2AWruGjv0HqQ0LKBhAsvooNjuQkff7~LDRXK2HKvrEcvtlj6YFC3MWPNmXHavDP35143sNNLQ--Yj5xMTQ~vl5Fpuw69G6psVD~mWwLGbRDMFLh8hogowVwt9elnRRXsTU8I4BL8SD6w__"
   },
   {
     "id": 110,
     "name": "BMW",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/7b8d/5a1c/125c0c01fc00daa5b0f29fd6ccb0521c?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=m5t~shZZWWfipg3mE9qR5FXU-YfBD7lvOlf0Caw84Yur984r2zxV61rvrelAOSOlnWfL2~cPzghnMKC8g7Y9F7JmF5VfeeMm1C5EQwOhFOE5UaJr9FMMjrzIhmB4PyPyVE51Y7OyWxvKiK7-3tWk8cTQz32r2-dlQcPS52OJFQZApksGCf6sW9JWYhiGe4V8bZh4LfOXb-PzofXkbqgEcDZcsVQBsB-fKvx-EEI9MlG~esr8ZqZQBnGE8DKxOVOeIroN9DpmAlgSSCdzL0Rn1zVl-fHeS3c8gEgxz0RZLs60kNegGGTOZFpLjDx2SOcaEcOG0hhzTpdyxkog66XQHg__"
   },
   {
     "id": 111,
     "name": "Audi",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/4498/4e73/4e85e4d80758b09d219feba4899c1539?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=lgewRdj44by-IvPRIUzKsMr0hlCdRxnA9aaaABigvs30bssOeHNWnT2JSBg1-Qz9yXoL74sXFulf-k1VVbTbBV-UJY4SbCdE7o0UQcU8zl9wQSKapySy4J4C1o1NHXypkI3odD5wwW9HXvzwjKuVc1wiZdfSiejNnJwEfJkGqIHrPHkMX~elkY7NrgQV9hDIyYLzNnR3G7NvpW1rpFUdm5D9U83eihrV-9Enm5YKmMD87L5M8X0b0bPKhb8NkJ-X3pSTZUs6QBuBUgNIlstxnvKhb6XpYhGVmvzuLTRQxrR65y6XkOhya7TWa0zw1hNDcePr8jVqyRL85jAap-U2nQ__"
   },
   {
     "id": 112,
     "name": "Tesla",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/9e24/7616/40bd7f8a70531c0df69c84965369908d?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=CtBEQGTKMaHxZhoLUiKfPisCE9y7H2t5Jn2DIbgdAmUJK2wmj~d51pChoLWbBjVb1cyv5NrtG8UHAmF90SvqdZ3mOIkWiCUwcqBdtkBtgI5O548h4yxyGBODApTszadtcsaMNWMGBvZp3kZS97PC1OWgsrx7fLqNyjdRdz0ZVRpLMyQCdPYE4tYRppQrhc~fGPouPnM21Mvyykx69uEkAOaXVuSGHbw11DgmpjBzyu8ETFhL7j~ZOHuYnVkMdVfyjyC~vkczpxzUKsGkwidtjufRkUugti949OYRKTEm-pCIK8VXc2dBaiIFd6Luo6FT-8k4H9n~JPFTE0xt3gmAbQ__"
   },
   {
     "id": 117,
     "name": "Porsche",
-    "image": "/path/to/image.png"
+    "image": "https://s3-alpha-sig.figma.com/img/d43e/3f39/4d0eab07b2abfe192e1dd58a53f8e6ed?Expires=1747008000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=GHwrfMrWoxoOEmxSCh9KB930bIBSx~aSPEI8V6Sk0~qsUqX71Gfp-u6k1uLzYs0W~BfxhCmPaoA8J6XN~yrjWySNyaXXzpayxHIVwdsvgIImhm4v6W9djaHVL05GDeJslAn6quXB~gIn9ixETa5mi-UqodZtGGyHfIMS53bwUDbYuWVJRAP2VYkMrNT~0ppfkzhL4VRLenX-mf74EbpUstcWnQ-Y1-GaDI89zMav6rTnK776vDTmAyu61E-WZjap7KGKUzFJBwO6qPl-NPMMucQc9Mf7nfCLiysMGqyBkSDEG9DQZVQWdEAhCTjbvyIrkih1oqPSK~HzmNIBZQyfWw__"
   },
   {
     "id": 151,
     "name": "Ferrari",
-    "image": "/path/to/image.png"
+    "image": "https://upload.wikimedia.org/wikipedia/tr/f/f0/Scuderia_Ferrari.png"
   },
   {
     "id": 152,
     "name": "Lamborghini",
-    "image": "/path/to/image.png"
+    "image": "https://upload.wikimedia.org/wikipedia/tr/5/53/Lamborghinilogo.jpg"
   }
 ]
