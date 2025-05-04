@@ -1,14 +1,19 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { Pressable, StyleSheet, Text, View, Platform } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 import { Car } from './api/data';
 import RoundedButton from './components/RoundedButton';
@@ -17,6 +22,8 @@ import { Fonts } from './constants/fonts';
 import CarDetails from './screens/CarDetails';
 import Home from './screens/Home';
 import Listed from './screens/Listed';
+import Makes from './screens/Makes';
+import Models from './screens/Models';
 import Profile from './screens/Profile';
 import SellCar from './screens/SellCar';
 import Settings from './screens/Settings';
@@ -26,18 +33,14 @@ SplashScreen.preventAutoHideAsync();
 type RootStackParamList = {
   TabNavigator: undefined;
   CarDetails: { car: Car };
+  Makes: undefined;
+  Models: { makeId: number };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
-type CustomTabBarProps = {
-  state: any;
-  descriptors: any;
-  navigation: any;
-};
-
-function CustomTabBar({ state, descriptors, navigation }: CustomTabBarProps) {
+function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const insets = useSafeAreaInsets();
 
   return (
@@ -106,6 +109,7 @@ function CustomTabBar({ state, descriptors, navigation }: CustomTabBarProps) {
               options.tabBarIcon({
                 color: isFocused ? Colors.primary : Colors.gray,
                 size: 24,
+                focused: false,
               })}
             <Text
               style={[styles.tabLabel, isFocused && styles.tabLabelFocused]}
@@ -219,6 +223,7 @@ export default function App() {
             screenOptions={{
               headerTitle: 'GrabSnap',
               headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
+              headerStyle: { backgroundColor: Colors.background },
             }}
           >
             <Stack.Screen
@@ -235,10 +240,22 @@ export default function App() {
               options={{
                 headerShown: true,
                 headerTitle: 'Car Details',
-                headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
-                headerStyle: {
-                  backgroundColor: Colors.background,
-                },
+              }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="Makes"
+              component={Makes}
+              options={{
+                headerShown: true,
+                headerTitle: 'Makes',
+              }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="Models"
+              component={Models}
+              options={{
+                headerShown: true,
+                headerTitle: 'Models',
               }}
             ></Stack.Screen>
           </Stack.Navigator>
