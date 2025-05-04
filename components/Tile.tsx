@@ -5,16 +5,12 @@ import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
 
 type TileProps = {
-  children: JSX.Element;
+  children: React.JSX.Element;
   label: string;
   value: string;
 };
 
-export default function Tile({
-  children,
-  label,
-  value,
-}: TileProps): JSX.Element {
+export default function Tile({ children, label, value }: TileProps) {
   return (
     <View style={styles.tile}>
       {children}
