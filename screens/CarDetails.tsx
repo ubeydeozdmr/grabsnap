@@ -123,6 +123,23 @@ export default function CarDetails({ route }: Props) {
             </View>
           </View>
           <Line />
+          <Text style={styles.description}>
+            For sale: the brand-new ZEEKR 001 — a bold fusion of luxury,
+            performance, and future-ready technology. This isn't just an
+            electric vehicle; it's a powerful statement of innovation and design
+            excellence.{'\n'}
+            {'\n'}The ZEEKR 001 delivers a driving experience unlike any other.
+            With its dual-motor all-wheel-drive system producing up to 536
+            horsepower, it accelerates from 0 to 100 km/h in just 3.8 seconds.
+            Silent, seamless, and thrilling — it redefines what it means to
+            drive electric.{'\n'}
+            {'\n'}Its impressive range of up to 620 kilometers (CLTC-rated)
+            ensures that your journey isn’t limited by charging stations, but
+            guided by your sense of freedom. The intelligent battery management
+            system, rapid charging capability, and over-the-air software updates
+            keep the car evolving long after you take it home.
+          </Text>
+          <Line />
           <Text style={styles.addFeatTitle}>Additional Features</Text>
           <ScrollView style={styles.addFeatures} horizontal={true}>
             {car.addFeats?.map((feat) => (
@@ -228,6 +245,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     flex: 1,
     textAlign: 'right',
+  },
+  description: {
+    fontFamily: Fonts.Satoshi.Medium,
   },
   addFeatTitle: {
     fontFamily: Fonts.Satoshi.Medium,
