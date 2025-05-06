@@ -42,7 +42,7 @@ export default function CarDetails({ route }: Props) {
         <Image source={{ uri: car.image }} style={styles.image} />
         <View style={styles.content}>
           <View style={styles.aligner}>
-            <View>
+            <View style={styles.textbox}>
               <Text style={styles.title}>
                 {car.model.make.name} {car.model.name}, {car.releaseYear}
               </Text>
@@ -203,6 +203,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
+  textbox: {
+    flex: 1,
+    flexShrink: 1,
+  },
   title: {
     fontSize: 24,
     fontFamily: Fonts.Satoshi.Bold,
@@ -219,12 +223,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    /* padding: 10, */
   },
   statsList: {
-    /*     borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: Colors.background, */
     marginVertical: 12,
     paddingVertical: 8,
   },
@@ -248,6 +248,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontFamily: Fonts.Satoshi.Medium,
+    fontSize: 16,
   },
   addFeatTitle: {
     fontFamily: Fonts.Satoshi.Medium,
@@ -284,10 +285,10 @@ const styles = StyleSheet.create({
   },
   ctsButton: {
     position: 'absolute',
-    bottom: 16,
+    bottom: 28,
     left: 16,
     right: 16,
-    padding: 12,
+    padding: 16,
     borderRadius: 8,
     backgroundColor: Colors.accent,
     alignItems: 'center',
