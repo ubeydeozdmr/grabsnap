@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   icon: {
-    width: 20,
-    height: 20,
+    width: 28,
+    height: 28,
     marginRight: 8,
   },
   pressed: {
@@ -43,5 +43,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: Fonts.Satoshi.Medium,
+    fontSize: 20,
   },
 });
