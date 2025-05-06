@@ -89,13 +89,6 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <GroupedButton isFirst onPress={makeButtonOnPressHandler}>
-        Make
-      </GroupedButton>
-      <GroupedButton isLast onPress={modelButtonOnPressHandler}>
-        Model
-      </GroupedButton>
-      <Text style={styles.title}>New Lists</Text>
       <FlatList
         data={data}
         numColumns={2}
@@ -109,6 +102,17 @@ export default function Home() {
             handler={() => tileOnPressHandler(item)}
           />
         )}
+        ListHeaderComponent={
+          <>
+            <GroupedButton isFirst onPress={makeButtonOnPressHandler}>
+              Make
+            </GroupedButton>
+            <GroupedButton isLast onPress={modelButtonOnPressHandler}>
+              Model
+            </GroupedButton>
+            <Text style={styles.title}>New Lists</Text>
+          </>
+        }
       />
     </View>
   );
