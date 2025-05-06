@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
+  Platform,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 
-import { Fonts } from '../constants/fonts';
 import { getMakes, Make } from '../api/data';
-import ListItem from './ListItem';
 import { Colors } from '../constants/colors';
+import { Fonts } from '../constants/fonts';
+import ListItem from './ListItem';
 
 export default function Makes() {
   const [data, setData] = useState<Make[]>([]);
@@ -64,7 +65,7 @@ export default function Makes() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>MAKES</Text>
+      {Platform.OS === 'ios' && <Text style={styles.title}>MAKES</Text>}
       <FlatList
         data={data}
         keyExtractor={(item) => item.id.toString()}
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   title: {
+    fontSize: 24,
     fontFamily: Fonts.Satoshi.Black,
     marginBottom: 16,
   },
