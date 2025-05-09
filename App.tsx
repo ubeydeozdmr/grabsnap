@@ -245,7 +245,7 @@ export default function App() {
               component={SellCar}
               options={{
                 headerShown: true,
-                headerTitle: 'Sell Car',
+                headerTitle: 'New Listing',
               }}
             ></Stack.Screen>
           </Stack.Navigator>
