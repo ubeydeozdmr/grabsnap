@@ -11,7 +11,7 @@ import {
 import { getMakes, Make } from '../api/data';
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
-import ListItem from './ListItem';
+import ListItem from '../components/ListItem';
 
 export default function Makes() {
   const [data, setData] = useState<Make[]>([]);

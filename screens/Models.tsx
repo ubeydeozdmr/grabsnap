@@ -12,7 +12,7 @@ import {
 import { getModelsFromMake, Model } from '../api/data';
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
-import ListItem from './ListItem';
+import ListItem from '../components/ListItem';
 
 type ModelsStackParamList = {
   Models: { makeId: number };
