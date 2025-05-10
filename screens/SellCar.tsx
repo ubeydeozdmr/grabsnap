@@ -50,7 +50,7 @@ export default function SellCar() {
             const { status } =
               await ImagePicker.requestCameraPermissionsAsync();
             if (status !== 'granted') {
-              alert('Camera permission required!');
+              Alert.alert('Permission Required', 'Camera permission required!');
               return;
             }
             const result = await ImagePicker.launchCameraAsync({
