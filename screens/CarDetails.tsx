@@ -4,6 +4,7 @@ import { type NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import {
   Image,
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -31,6 +32,10 @@ export default function CarDetails({ route }: Props) {
 
   function onPressHandler() {
     setFavorite((f) => !f);
+  }
+
+  function callSeller() {
+    Linking.openURL(`tel:${car.seller.phone}`);
   }
 
   return (
@@ -123,9 +128,7 @@ export default function CarDetails({ route }: Props) {
             </View>
           </View>
           <Line />
-          <Text style={styles.description}>
-            {car.description}
-          </Text>
+          <Text style={styles.description}>{car.description}</Text>
           <Line />
           <Text style={styles.addFeatTitle}>Additional Features</Text>
           <ScrollView style={styles.addFeatures} horizontal={true}>
@@ -162,6 +165,7 @@ export default function CarDetails({ route }: Props) {
         </View>
       </ScrollView>
       <Pressable
+        onPress={callSeller}
         style={({ pressed }) => [styles.ctsButton, pressed && styles.pressed]}
       >
         <Text style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}>
