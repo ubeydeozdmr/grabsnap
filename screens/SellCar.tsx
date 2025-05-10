@@ -1,3 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import {
   ScrollView,
@@ -6,15 +8,16 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Camera } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
 
+import { Car } from '../api/data';
+import GroupedButton from '../components/GroupedButton';
+import GroupedField from '../components/GroupedField';
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
-import GroupedButton from '../components/GroupedButton';
-import { Car } from '../api/data';
-import { useNavigation } from '@react-navigation/native';
-import GroupedField from '../components/GroupedField';
 
 type RootStackParamList = {
   TabNavigator: undefined;
@@ -34,6 +37,53 @@ export default function SellCar() {
 
   function modelButtonOnPressHandler() {
     navigation.navigate('Models', { makeId: 101 });
+  }
+
+  async function openCameraOrGallery() {
+    Alert.alert(
+      'Add Photo',
+      'Choose an option',
+      [
+        {
+          text: 'Take Photo',
+          onPress: async () => {
+            const { status } =
+              await ImagePicker.requestCameraPermissionsAsync();
+            if (status !== 'granted') {
+              alert('Camera permission required!');
+              return;
+            }
+            const result = await ImagePicker.launchCameraAsync({
+              mediaTypes: ImagePicker.MediaTypeOptions.Images,
+              allowsEditing: true,
+              aspect: [16, 9],
+              quality: 1,
+            });
+            console.log(result);
+          },
+        },
+        {
+          text: 'Select from Gallery',
+          onPress: async () => {
+            const { status } =
+              await ImagePicker.requestMediaLibraryPermissionsAsync();
+            if (status !== 'granted') {
+              alert('Gallery permission required!');
+              return;
+            }
+            const result = await ImagePicker.launchImageLibraryAsync({
+              mediaTypes: ImagePicker.MediaTypeOptions.Images,
+              allowsEditing: true,
+              aspect: [16, 9],
+              quality: 1,
+            });
+            console.log(result);
+          },
+        },
+        { text: 'Cancel', style: 'cancel' },
+      ],
+      { cancelable: true },
+    );
   }
 
   return (
@@ -64,7 +114,14 @@ export default function SellCar() {
             You are required to provide clear photos of the car's front, rear,
             sides, and any other angles.
           </Text>
-          <TouchableOpacity style={styles.pictureButton}>
+          <TouchableOpacity
+            style={styles.pictureButton}
+            onPress={() => {
+              // Logic to open camera or gallery
+              // This is a placeholder function, you need to implement the actual logic
+              openCameraOrGallery();
+            }}
+          >
             <Text style={styles.pictureButtonText}>Take Picture</Text>
           </TouchableOpacity>
         </View>
