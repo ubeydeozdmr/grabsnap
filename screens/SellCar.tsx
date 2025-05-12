@@ -23,6 +23,7 @@ type RootStackParamList = {
   CarDetails: { car: Car };
   Makes: undefined;
   Models: { makeId: number };
+  SubmissionCompleted: undefined;
 };
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -36,6 +37,10 @@ export default function SellCar() {
 
   function modelButtonOnPressHandler() {
     navigation.navigate('Models', { makeId: 101 });
+  }
+
+  function submitButtonOnPressHandler() {
+    navigation.navigate('SubmissionCompleted');
   }
 
   async function openCameraOrGallery() {
@@ -191,7 +196,10 @@ export default function SellCar() {
         <Text style={styles.warn}>
           Before you submit, please review your listing.
         </Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={submitButtonOnPressHandler}
+        >
           <Text style={styles.buttonText}>SUBMIT</Text>
         </TouchableOpacity>
       </View>
