@@ -27,6 +27,7 @@ import Models from './screens/Models';
 import Profile from './screens/Profile';
 import SellCar from './screens/SellCar';
 import Settings from './screens/Settings';
+import SubmissionCompleted from './screens/SubmissionCompleted';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,6 +37,7 @@ type RootStackParamList = {
   Makes: undefined;
   Models: { makeId: number };
   SellCar: undefined;
+  SubmissionCompleted: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -246,6 +248,14 @@ export default function App() {
               options={{
                 headerShown: true,
                 headerTitle: 'New Listing',
+              }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="SubmissionCompleted"
+              component={SubmissionCompleted}
+              options={{
+                headerShown: true,
+                headerTitle: 'Submission Completed',
               }}
             ></Stack.Screen>
           </Stack.Navigator>
