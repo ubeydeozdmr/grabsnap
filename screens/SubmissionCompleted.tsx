@@ -34,7 +34,7 @@ export default function SubmissionCompleted() {
         Please check your email for further updates.
       </Text>
       <TouchableOpacity style={styles.button} onPress={onPressHandler}>
-        <Text style={styles.buttonText}>Go to Home</Text>
+        <Text style={styles.buttonText}>RETURN TO HOME PAGE</Text>
       </TouchableOpacity>
     </View>
   );
