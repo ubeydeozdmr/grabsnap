@@ -215,7 +215,7 @@ export default function App() {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="ChangePhone"
+            initialRouteName="TabNavigator"
             screenOptions={{
               headerTitle: 'GrabSnap',
               headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
