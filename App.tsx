@@ -28,6 +28,12 @@ import Profile from './screens/Profile';
 import SellCar from './screens/SellCar';
 import Settings from './screens/Settings';
 import SubmissionCompleted from './screens/SubmissionCompleted';
+import ChangePass from './screens/auth/ChangePass';
+import Login from './screens/auth/Login';
+import Register from './screens/auth/Register';
+import Verification from './screens/auth/Verification';
+import Welcome from './screens/auth/Welcome';
+import ChangePhone from './screens/auth/ChangePhone';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -38,6 +44,12 @@ type RootStackParamList = {
   Models: { makeId: number };
   SellCar: undefined;
   SubmissionCompleted: undefined;
+  Register: undefined;
+  Welcome: undefined;
+  Login: undefined;
+  ChangePass: undefined;
+  Verification: undefined;
+  ChangePhone: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -203,13 +215,19 @@ export default function App() {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="TabNavigator"
+            initialRouteName="ChangePhone"
             screenOptions={{
               headerTitle: 'GrabSnap',
               headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
               headerStyle: { backgroundColor: Colors.background },
             }}
           >
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Welcome" component={Welcome} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="ChangePass" component={ChangePass} />
+            <Stack.Screen name="Verification" component={Verification} />
+            <Stack.Screen name="ChangePhone" component={ChangePhone} />
             <Stack.Screen
               name="TabNavigator"
               component={TabNavigator}
