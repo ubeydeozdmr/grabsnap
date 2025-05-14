@@ -132,6 +132,18 @@ export default function FormButton({
       }
     }
 
+    // Change-Phone Mode
+    else if(mode == "change-phone"){
+      if(isPhoneNumberValid(regDataSet.phoneNumber)){
+        phoneWarning = "Phone number has successfully been changed!";
+        phoneWarningColor = "green";
+      }
+      else{
+        phoneWarning = "Phone number not valid!";
+        phoneWarningColor = "red";
+      }
+    }
+
     // Verification Mode
     else if (mode == 'verify') {
       if (await isCodeCorrect(regDataSet.code)) {

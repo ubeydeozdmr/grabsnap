@@ -32,6 +32,7 @@ import Login from './screens/auth/Login';
 import Register from './screens/auth/Register';
 import Verification from './screens/auth/Verification';
 import Welcome from './screens/auth/Welcome';
+import ChangePhone from './screens/auth/ChangePhone';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -46,6 +47,7 @@ type RootStackParamList = {
   Login: undefined;
   ChangePass: undefined;
   Verification: undefined;
+  ChangePhone: undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -211,7 +213,7 @@ export default function App() {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="TabNavigator"
+            initialRouteName="ChangePhone"
             screenOptions={{
               headerTitle: 'GrabSnap',
               headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
@@ -223,6 +225,7 @@ export default function App() {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="ChangePass" component={ChangePass} />
             <Stack.Screen name="Verification" component={Verification} />
+            <Stack.Screen name="ChangePhone" component={ChangePhone} />
             <Stack.Screen
               name="TabNavigator"
               component={TabNavigator}
