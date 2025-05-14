@@ -139,8 +139,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
-    padding: 16,
-    paddingBottom: 0,
+    paddingHorizontal: 16,
   },
   pressed: {
     opacity: 0.5,
