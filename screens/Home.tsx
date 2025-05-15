@@ -1,9 +1,11 @@
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
+  Pressable,
   StyleSheet,
   Text,
   View,
@@ -22,6 +24,7 @@ type RootStackParamList = {
   CarDetails: { car: Car };
   Makes: undefined;
   Models: { makeId: number };
+  Filter: undefined;
 };
 
 export default function Home() {
@@ -110,6 +113,20 @@ export default function Home() {
             <GroupedButton isLast onPress={modelButtonOnPressHandler}>
               Model
             </GroupedButton>
+            <Pressable
+              style={({ pressed }) => [
+                styles.filterButton,
+                pressed && styles.pressed,
+              ]}
+              onPress={() => navigation.navigate('Filter')}
+            >
+              <MaterialIcons
+                name="filter-list"
+                size={24}
+                color={Colors.primary}
+              />
+              <Text style={styles.filterButtonText}>FILTER</Text>
+            </Pressable>
             <Text style={styles.title}>New Lists</Text>
           </>
         }
@@ -122,8 +139,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
-    padding: 16,
-    paddingBottom: 0,
+    paddingHorizontal: 16,
+  },
+  pressed: {
+    opacity: 0.5,
+  },
+  filterButton: {
+    backgroundColor: Colors.white,
+    padding: 10,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    maxWidth: 100,
+    marginVertical: 16,
+  },
+  filterButtonText: {
+    color: Colors.black,
+    fontSize: 14,
+    fontFamily: Fonts.Satoshi.Bold,
+    marginLeft: 4,
   },
   title: {
     fontSize: 16,
