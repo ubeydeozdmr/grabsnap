@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native';
 import { AuthProvider } from '../../context/AuthContext';
+import { UserProvider } from '../../context/UserContext';
 
 import FormButton from '../../components/FormButton';
 import FormTitle from '../../components/FormTitle';
@@ -14,7 +15,15 @@ const { width, height } = Dimensions.get('window');
 
 export default function Register() {
 
-  const {isAuthenticated, setIsAuthenticated} = useContext(AuthProvider);
+  const authContext = useContext(AuthProvider);
+  const userContext = useContext(UserProvider)
+
+  if (!authContext || !userContext) {
+    throw new Error('Context API must be used within an AuthContext provider');
+  }
+
+  const { isAuthenticated, setIsAuthenticated } = authContext;
+  const { userInfos, setUserInfos } = userContext;
 
   const [regDataSet, setRegDataSet] = useState({
     email: '',
@@ -22,7 +31,6 @@ export default function Register() {
     passwordRep: '',
     phoneNumber: '',
   });
-
 
   // When the registration process is totally on a proper level, turns into true.
 
@@ -58,14 +66,16 @@ export default function Register() {
           style={styles.input}
           placeholder="Email"
           value={regDataSet.email}
-          onChangeText={(text) =>
-            setRegDataSet((prev) => ({ ...prev, email: text }))
-          }
+          onChangeText={(text) => {
+            setRegDataSet((prev) => ({ ...prev, email: text }));
+            setUserInfos((prev) => ({ ...prev, email: text }));
+          }}
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
           textContentType="emailAddress"
         />
+
 
         {showEmailWarning && (
           <Text style={[styles.warningText, { color: emailWarningColor }]}>
@@ -79,9 +89,10 @@ export default function Register() {
           placeholder="Password"
           secureTextEntry
           value={regDataSet.password}
-          onChangeText={(text) =>
+          onChangeText={(text) =>{
             setRegDataSet((prev) => ({ ...prev, password: text }))
-          }
+            setUserInfos((prev) => ({ ...prev, password: text }));
+          }}
         />
 
         <TextWarning
@@ -117,9 +128,10 @@ export default function Register() {
           style={styles.input}
           placeholder="Phone Number"
           value={regDataSet.phoneNumber}
-          onChangeText={(text) =>
+          onChangeText={(text) =>{
             setRegDataSet((prev) => ({ ...prev, phoneNumber: text }))
-          }
+            setUserInfos((prev) => ({ ...prev, phoneNumber: text }));
+          }}
           keyboardType="numeric"
           maxLength={11} // the phone number consists of 11 digits.
         />
@@ -157,7 +169,7 @@ export default function Register() {
             passwordWarningColor,
             phoneWarning,
             phoneWarningColor,
-            result // PUT IT IN ALSO LOGIN
+            result 
           }) => {
             if (emailWarning) {
               setEmailWarning(emailWarning);
@@ -186,6 +198,7 @@ export default function Register() {
               setShowPhoneWarning(false);
             }
             result == 1 ? setIsAuthenticated(true) : setIsAuthenticated(false);
+            // alert(JSON.stringify(userInfos))
           }}
         />
       </View>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import FormButton from '../../components/FormButton';
@@ -7,14 +7,32 @@ import LinkNavigator from '../../components/LinkNavigator';
 import { isEmailTaken, isPasswordCorrect } from '../../utils/validation';
 import { Fonts } from '../../constants/fonts';
 import { Colors } from '../../constants/colors';
+import { AuthProvider } from '../../context/AuthContext';
+import { UserProvider } from '../../context/UserContext';
 
 const { width, height } = Dimensions.get('window');
 
 export default function Login() {
+
+  const authContext = useContext(AuthProvider);
+  const userContext = useContext(UserProvider)
+  
+    if (!authContext || !userContext) {
+      throw new Error('Context API must be used within an AuthContext provider');
+    }
+  
+  const { isAuthenticated, setIsAuthenticated } = authContext;
+  const { userInfos, setUserInfos } = userContext;
+
   const [logDataSet, setLogDataSet] = useState({
     email: '',
     password: '',
   });
+
+
+  useEffect(()=>{
+    alert(JSON.stringify(userInfos))
+  }, [])
 
   const [passwordWarning, setPasswordWarning] = useState(null);
   const [showPasswordWarning, setShowPasswordWarning] = useState(false);
@@ -69,14 +87,24 @@ export default function Login() {
           mode="login"
           regDataSet={logDataSet}
           onResult={async (passwordWarning) => {
-            if (
-              (await isEmailTaken(logDataSet.email)) &&
-              (await isPasswordCorrect(logDataSet.password))
-            ) {
+            // if (
+            //   (await isEmailTaken(logDataSet.email)) &&
+            //   (await isPasswordCorrect(logDataSet.password))
+            // ) {
+            //   setPasswordWarning(passwordWarning.passwordWarning);
+            //   setPasswordWarningColor(passwordWarning.passwordWarningColor);
+            //   setShowPasswordWarning(true);
+            // } else {
+            //   setPasswordWarning(passwordWarning.passwordWarning);
+            //   setPasswordWarningColor(passwordWarning.passwordWarningColor);
+            //   setShowPasswordWarning(true);
+            // }
+            if(logDataSet.email == userInfos.email && logDataSet.password == userInfos.password){
               setPasswordWarning(passwordWarning.passwordWarning);
               setPasswordWarningColor(passwordWarning.passwordWarningColor);
               setShowPasswordWarning(true);
-            } else {
+            }
+            else{
               setPasswordWarning(passwordWarning.passwordWarning);
               setPasswordWarningColor(passwordWarning.passwordWarningColor);
               setShowPasswordWarning(true);
