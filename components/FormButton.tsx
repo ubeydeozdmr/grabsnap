@@ -120,7 +120,7 @@ export default function FormButton({
       //   passwordWarningColor = 'red';
       //   result *= 0;
       // }
-      if(regDataSet.email == userInfos.email && regDataSet.password == userInfos.password){
+      if(regDataSet.email == userInfos.email && regDataSet.password == userInfos.password && userInfos.email != ""){
         passwordWarning = 'Correct Password, welcome!';
         passwordWarningColor = 'green';
       }
