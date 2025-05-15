@@ -79,7 +79,7 @@ export default function Filter() {
 
       {/* Mileage */}
       <View style={styles.sectionContainer}>
-        <Text style={styles.sectionLabel}>Millage</Text>
+        <Text style={styles.sectionLabel}>Mileage</Text>
         <View style={styles.rowContainer}>
           <View style={styles.inputWrapper}>
             {/* <Text style={styles.inputLabel}>Min</Text> */}
