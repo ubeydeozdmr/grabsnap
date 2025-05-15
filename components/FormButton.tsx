@@ -18,6 +18,8 @@ import {
 
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
+import { useContext } from 'react';
+import { UserProvider } from '../context/UserContext';
 
 const { width } = Dimensions.get('window');
 
@@ -34,6 +36,14 @@ export default function FormButton({
   onResult,
   mode,
 }: FormButtonProps) {
+
+  const userContext = useContext(UserProvider)
+
+   if (!userContext) {
+    throw new Error('Context API must be used within an AuthContext provider');
+  }
+  const { userInfos, setUserInfos } = userContext;
+
   const handlePress = async () => {
     let emailWarning = null;
     let passwordWarning = null;
@@ -98,13 +108,23 @@ export default function FormButton({
     // Login Mode
     else if (mode == 'login') {
       // Check if the email entered not taken and the password is correct
-      if (
-        (await isEmailTaken(regDataSet.email)) &&
-        (await isPasswordCorrect(regDataSet.password))
-      ) {
+      // if (
+      //   (await isEmailTaken(regDataSet.email)) &&
+      //   (await isPasswordCorrect(regDataSet.password))
+      // ) {
+      //   passwordWarning = 'Correct Password, welcome!';
+      //   passwordWarningColor = 'green';
+      // } else {
+      //   passwordWarning = 'Wrong credentials!';
+      //   passwordWarningColor = 'red';
+      //   result *= 0;
+      // }
+
+      if(regDataSet.email == userInfos.email && regDataSet.password == userInfos.password){
         passwordWarning = 'Correct Password, welcome!';
         passwordWarningColor = 'green';
-      } else {
+      }
+      else{
         passwordWarning = 'Wrong credentials!';
         passwordWarningColor = 'red';
         result *= 0;
