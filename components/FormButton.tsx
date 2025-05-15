@@ -48,11 +48,14 @@ export default function FormButton({
     let codeWarning = null;
     let codeWarningColor = 'red';
 
+    let result = 1;
+
     // Register Mode
     if (mode == 'register') {
       // Email validation
       if (!isEmailValid(regDataSet.email)) {
         emailWarning = 'Please enter a valid email address!';
+        result *= 0;
       } else {
         emailWarning = 'Email address is valid!';
         emailWarningColor = 'green'; // Set to green if email is valid
@@ -68,9 +71,11 @@ export default function FormButton({
       if (!isMatch) {
         passwordWarning = 'Passwords do not match!';
         passwordWarningColor = 'red'; // Ensure red color if passwords don't match
+        result *= 0;
       } else if (!isValid) {
         passwordWarning = 'Password you entered is not valid!';
         passwordWarningColor = 'red'; // Ensure red color if password is invalid
+        result *= 0;
       } else {
         passwordWarning = 'Passwords correctly match!';
         passwordWarningColor = 'green';
@@ -86,6 +91,7 @@ export default function FormButton({
       } else {
         phoneWarning = 'Phone number not valid!';
         phoneWarningColor = 'red';
+        result *= 0;
       }
     }
 
@@ -101,6 +107,7 @@ export default function FormButton({
       } else {
         passwordWarning = 'Wrong credentials!';
         passwordWarningColor = 'red';
+        result *= 0;
       }
     }
 
@@ -166,6 +173,7 @@ export default function FormButton({
       compWarningColor,
       codeWarning, // verification code warning
       codeWarningColor,
+      result
     });
   };
 

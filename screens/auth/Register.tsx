@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native';
+import { AuthProvider } from '../../context/AuthContext';
 
 import FormButton from '../../components/FormButton';
 import FormTitle from '../../components/FormTitle';
@@ -12,12 +13,25 @@ import { isPasswordValid } from '../../utils/validation';
 const { width, height } = Dimensions.get('window');
 
 export default function Register() {
+
+  const {isAuthenticated, setIsAuthenticated} = useContext(AuthProvider);
+
   const [regDataSet, setRegDataSet] = useState({
     email: '',
     password: '',
     passwordRep: '',
     phoneNumber: '',
   });
+
+
+  // When the registration process is totally on a proper level, turns into true.
+
+//   useEffect(() => {
+//   if (isAuthenticated) {
+//     alert(true);
+//   }
+// }, [isAuthenticated]);
+
 
   const [emailWarning, setEmailWarning] = useState(null);
   const [showEmailWarning, setShowEmailWarning] = useState(false);
@@ -143,6 +157,7 @@ export default function Register() {
             passwordWarningColor,
             phoneWarning,
             phoneWarningColor,
+            result // PUT IT IN ALSO LOGIN
           }) => {
             if (emailWarning) {
               setEmailWarning(emailWarning);
@@ -170,6 +185,7 @@ export default function Register() {
             } else {
               setShowPhoneWarning(false);
             }
+            result == 1 ? setIsAuthenticated(true) : setIsAuthenticated(false);
           }}
         />
       </View>
@@ -209,3 +225,19 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
