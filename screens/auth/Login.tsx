@@ -29,10 +29,18 @@ export default function Login() {
     password: '',
   });
 
+    // When the log-in process is totally on a proper level, turns into true.
 
-  useEffect(()=>{
-    alert(JSON.stringify(userInfos))
-  }, [])
+//   useEffect(() => {
+//   if (isAuthenticated) {
+//     alert(true);
+//   }
+// }, [isAuthenticated]);
+
+
+  // useEffect(()=>{
+  //   alert(JSON.stringify(userInfos))
+  // }, [])
 
   const [passwordWarning, setPasswordWarning] = useState(null);
   const [showPasswordWarning, setShowPasswordWarning] = useState(false);
@@ -86,7 +94,7 @@ export default function Login() {
           name="Login"
           mode="login"
           regDataSet={logDataSet}
-          onResult={async (passwordWarning) => {
+          onResult={async ({passwordWarning, passwordWarningColor, result}) => {
             // if (
             //   (await isEmailTaken(logDataSet.email)) &&
             //   (await isPasswordCorrect(logDataSet.password))
@@ -99,16 +107,17 @@ export default function Login() {
             //   setPasswordWarningColor(passwordWarning.passwordWarningColor);
             //   setShowPasswordWarning(true);
             // }
-            if(logDataSet.email == userInfos.email && logDataSet.password == userInfos.password){
-              setPasswordWarning(passwordWarning.passwordWarning);
-              setPasswordWarningColor(passwordWarning.passwordWarningColor);
+            if(logDataSet.email == userInfos.email && logDataSet.password == userInfos.password && userInfos.email != ""){
+              setPasswordWarning(passwordWarning);
+              setPasswordWarningColor(passwordWarningColor);
               setShowPasswordWarning(true);
             }
             else{
-              setPasswordWarning(passwordWarning.passwordWarning);
-              setPasswordWarningColor(passwordWarning.passwordWarningColor);
+              setPasswordWarning(passwordWarning);
+              setPasswordWarningColor(passwordWarningColor);
               setShowPasswordWarning(true);
             }
+            result == 1 ? setIsAuthenticated(true) : setIsAuthenticated(false);
           }}
         />
       </View>

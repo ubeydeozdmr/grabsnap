@@ -108,6 +108,7 @@ export default function FormButton({
     // Login Mode
     else if (mode == 'login') {
       // Check if the email entered not taken and the password is correct
+      
       // if (
       //   (await isEmailTaken(regDataSet.email)) &&
       //   (await isPasswordCorrect(regDataSet.password))
@@ -119,7 +120,6 @@ export default function FormButton({
       //   passwordWarningColor = 'red';
       //   result *= 0;
       // }
-
       if(regDataSet.email == userInfos.email && regDataSet.password == userInfos.password){
         passwordWarning = 'Correct Password, welcome!';
         passwordWarningColor = 'green';
