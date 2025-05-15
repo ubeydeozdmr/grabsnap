@@ -8,12 +8,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import AuthContext from './context/AuthContext';
 
 import { Car } from './api/data';
 import RoundedButton from './components/RoundedButton';
@@ -194,6 +195,7 @@ export function TabNavigator() {
 }
 
 export default function App() {
+
   const [fontsLoaded] = useFonts({
     'Satoshi-Regular': require('./assets/fonts/Satoshi-Regular.ttf'),
     'Satoshi-Medium': require('./assets/fonts/Satoshi-Medium.ttf'),
@@ -208,12 +210,12 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <>
+    <AuthContext>
       <StatusBar style="auto" />
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="ChangePhone"
+            initialRouteName="Register"
             screenOptions={{
               headerTitle: 'GrabSnap',
               headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
@@ -269,7 +271,7 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
-    </>
+    </AuthContext>
   );
 }
 
