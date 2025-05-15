@@ -15,6 +15,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import AuthContext from './context/AuthContext';
+import UserContext from './context/UserContext';
 
 import { Car } from './api/data';
 import RoundedButton from './components/RoundedButton';
@@ -210,68 +211,70 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <AuthContext>
-      <StatusBar style="auto" />
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="Register"
-            screenOptions={{
-              headerTitle: 'GrabSnap',
-              headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
-              headerStyle: { backgroundColor: Colors.background },
-            }}
-          >
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Welcome" component={Welcome} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="ChangePass" component={ChangePass} />
-            <Stack.Screen name="Verification" component={Verification} />
-            <Stack.Screen name="ChangePhone" component={ChangePhone} />
-            <Stack.Screen
-              name="TabNavigator"
-              component={TabNavigator}
-              options={{
-                headerShown: false,
+    <UserContext>
+      <AuthContext>
+        <StatusBar style="auto" />
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <Stack.Navigator
+              initialRouteName="Register"
+              screenOptions={{
                 headerTitle: 'GrabSnap',
+                headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
+                headerStyle: { backgroundColor: Colors.background },
               }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="CarDetails"
-              component={CarDetails}
-              options={{
-                headerShown: true,
-                headerTitle: 'Car Details',
-              }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="Makes"
-              component={Makes}
-              options={{
-                headerShown: true,
-                headerTitle: 'Makes',
-              }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="Models"
-              component={Models}
-              options={{
-                headerShown: true,
-                headerTitle: 'Models',
-              }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="SellCar"
-              component={SellCar}
-              options={{
-                headerShown: true,
-                headerTitle: 'Sell Car',
-              }}
-            ></Stack.Screen>
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </AuthContext>
+            >
+              <Stack.Screen name="Register" component={Register} />
+              <Stack.Screen name="Welcome" component={Welcome} />
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="ChangePass" component={ChangePass} />
+              <Stack.Screen name="Verification" component={Verification} />
+              <Stack.Screen name="ChangePhone" component={ChangePhone} />
+              <Stack.Screen
+                name="TabNavigator"
+                component={TabNavigator}
+                options={{
+                  headerShown: false,
+                  headerTitle: 'GrabSnap',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="CarDetails"
+                component={CarDetails}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Car Details',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="Makes"
+                component={Makes}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Makes',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="Models"
+                component={Models}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Models',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="SellCar"
+                component={SellCar}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Sell Car',
+                }}
+              ></Stack.Screen>
+            </Stack.Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </AuthContext>
+    </UserContext>
   );
 }
 
