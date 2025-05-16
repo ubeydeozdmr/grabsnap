@@ -67,7 +67,12 @@ export default function Settings() {
             styles.button,
             pressed && { backgroundColor: Colors.gray },
           ]}
-          onPress={() => navigation.navigate('Login')}
+          onPress={() =>
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'Login' }],
+            })
+          }
         >
           <Text style={[styles.buttonText, { color: Colors.primary }]}>
             Log out
@@ -90,7 +95,10 @@ export default function Settings() {
                   text: 'Delete',
                   style: 'destructive',
                   onPress: () => {
-                    navigation.navigate('Login');
+                    navigation.reset({
+                      index: 0,
+                      routes: [{ name: 'Login' }],
+                    });
                   },
                 },
               ],
