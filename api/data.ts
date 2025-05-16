@@ -20,7 +20,7 @@ type RawCar = {
   id: number;
   model: number;
   seller: number;
-  image: string;
+  image: string[];
   description: string;
   releaseYear: number;
   price: number;

@@ -3,7 +3,11 @@
     "id": 11200100001,
     "model": 112001,
     "seller": 1,
-    "image": "https://ecofactortech.com/wp-content/uploads/2024/12/tesla-model-s-p100d-vrazhayuchi-harakterystyky-elektromobilya.jpg",
+    "image": [
+      "https://ecofactortech.com/wp-content/uploads/2024/12/tesla-model-s-p100d-vrazhayuchi-harakterystyky-elektromobilya.jpg",
+      "https://www.actualidadmotor.com/wp-content/uploads/2022/02/Tesla-Model-S-Portada-2048x1228.jpg.webp",
+      "https://www.platinumautohaus.com/imagetag/14986/2/l/Used-2022-Tesla-Model-S-Plaid.jpg"
+    ],
     "description": "Experience the ultimate electric performance with Tesla Model S Plaid. Nearly brand new with insane acceleration.",
     "releaseYear": 2022,
     "price": 89990,
@@ -24,7 +28,9 @@
     "id": 11700100001,
     "model": 117001,
     "seller": 2,
-    "image": "https://vehicle-images.dealerinspire.com/e99f-110010273/WP0CB2A90HS154790/f4358e919b31cc506c5eaa268b443d25.jpg",
+    "image": [
+      "https://vehicle-images.dealerinspire.com/e99f-110010273/WP0CB2A90HS154790/f4358e919b31cc506c5eaa268b443d25.jpg"
+    ],
     "description": "Iconic Porsche 911 Carrera in pristine condition. Sport Chrono package included!",
     "releaseYear": 2019,
     "price": 109000,
@@ -45,7 +51,9 @@
     "id": 10300100001,
     "model": 103001,
     "seller": 3,
-    "image": "https://i.pinimg.com/736x/c1/c8/93/c1c8930bf894edd1665fdd311b6f9a59.jpg",
+    "image": [
+      "https://i.pinimg.com/736x/c1/c8/93/c1c8930bf894edd1665fdd311b6f9a59.jpg"
+    ],
     "description": "A beautifully restored 1967 Ford Mustang GT. True American muscle at its best!",
     "releaseYear": 1967,
     "price": 58000,
@@ -66,7 +74,9 @@
     "id": 11000100001,
     "model": 110001,
     "seller": 4,
-    "image": "https://vehicle-direct.ca/wp-content/uploads/2023/08/IMG_3084-scaled.jpeg",
+    "image": [
+      "https://vehicle-direct.ca/wp-content/uploads/2023/08/IMG_3084-scaled.jpeg"
+    ],
     "description": "High-performance BMW X5 M with all the luxury and raw power you need.",
     "releaseYear": 2021,
     "price": 94000,
@@ -91,7 +101,9 @@
     "id": 15100100001,
     "model": 151001,
     "seller": 5,
-    "image": "https://i0.wp.com/www.schmitt.com/wp-content/uploads/2021/08/407660-2013-FERRARI-458-ITALIA-001.jpeg?w=1170&ssl=1",
+    "image": [
+      "https://i0.wp.com/www.schmitt.com/wp-content/uploads/2021/08/407660-2013-FERRARI-458-ITALIA-001.jpeg?w=1170&ssl=1"
+    ],
     "description": "The thrilling Ferrari 458 Italia. Legendary performance and beauty combined.",
     "releaseYear": 2015,
     "price": 239000,
@@ -116,7 +128,9 @@
     "id": 10100100001,
     "model": 101001,
     "seller": 6,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaPpJ0ts6UeMS3oC55Y7bIbv0d54GO0CsxA&s",
+    "image": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaPpJ0ts6UeMS3oC55Y7bIbv0d54GO0CsxA&s"
+    ],
     "description": "Reliable Toyota Corolla with great fuel economy and modern tech.",
     "releaseYear": 2020,
     "price": 22500,
@@ -137,7 +151,7 @@
     "id": 15200100001,
     "model": 152001,
     "seller": 7,
-    "image": "https://www.boutsenclassiccars.com/images/BCC/slide/135_1.jpg",
+    "image": ["https://www.boutsenclassiccars.com/images/BCC/slide/135_1.jpg"],
     "description": "Insane Lamborghini Aventador SVJ. Pure drama and speed in a street-legal race car.",
     "releaseYear": 2020,
     "price": 517000,
@@ -162,7 +176,9 @@
     "id": 10700100001,
     "model": 107001,
     "seller": 8,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlBaOh8B62kvXuhng7kKJ4ma2M3jqwSgjDmw&s",
+    "image": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlBaOh8B62kvXuhng7kKJ4ma2M3jqwSgjDmw&s"
+    ],
     "description": "Monster muscle with supercharged power. Camaro ZL1 with track package.",
     "releaseYear": 2018,
     "price": 68000,
@@ -183,7 +199,9 @@
     "id": 11100100001,
     "model": 111001,
     "seller": 9,
-    "image": "https://listers.co.uk/img/v/used/largest/422649/2025-audi-a8-diesel-saloon-50-tdi-quattro-black-edition-4dr-tiptronic-in-daytona-grey-pearl-effect-at-coventry-audi.jpg",
+    "image": [
+      "https://listers.co.uk/img/v/used/largest/422649/2025-audi-a8-diesel-saloon-50-tdi-quattro-black-edition-4dr-tiptronic-in-daytona-grey-pearl-effect-at-coventry-audi.jpg"
+    ],
     "description": "Top-tier luxury Audi A8 L. Smooth, silent, and packed with tech.",
     "releaseYear": 2021,
     "price": 86500,
@@ -208,7 +226,9 @@
     "id": 10200100001,
     "model": 102001,
     "seller": 10,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRYKFSORbySjnZFkioa9Au6MCDb61QEMguwQ&s",
+    "image": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRYKFSORbySjnZFkioa9Au6MCDb61QEMguwQ&s"
+    ],
     "description": "Fun-to-drive Golf GTI with manual gearbox. Practical yet sporty!",
     "releaseYear": 2022,
     "price": 30000,

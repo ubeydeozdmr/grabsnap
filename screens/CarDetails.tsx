@@ -3,6 +3,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { type NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import {
+  Dimensions,
   Image,
   Linking,
   Pressable,
@@ -11,6 +12,8 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useSharedValue } from 'react-native-reanimated';
+import Carousel from 'react-native-reanimated-carousel';
 
 import { Car } from '../api/data';
 import Line from '../components/Line';
@@ -28,7 +31,11 @@ type Props = NativeStackScreenProps<RootStackParamList, 'CarDetails'>;
 
 export default function CarDetails({ route }: Props) {
   const [favorite, setFavorite] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const progress = useSharedValue(0);
   const { car } = route.params;
+
+  const width = Dimensions.get('window').width;
 
   function onPressHandler() {
     setFavorite((f) => !f);
@@ -44,7 +51,49 @@ export default function CarDetails({ route }: Props) {
         style={styles.container}
         contentContainerStyle={{ paddingBottom: 80 }}
       >
-        <Image source={{ uri: car.image }} style={styles.image} />
+        <View style={{ position: 'relative', marginBottom: 16 }}>
+          <Carousel
+            data={car.image}
+            renderItem={({ item }) => (
+              <Image source={{ uri: item }} style={styles.image} />
+            )}
+            width={width}
+            height={300}
+            onProgressChange={(_, absoluteProgress) =>
+              setActiveIndex(Math.round(absoluteProgress))
+            }
+            snapEnabled
+            pagingEnabled
+            style={{ marginBottom: 0 }}
+            loop
+          />
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 16,
+              left: 0,
+              right: 0,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            {car.image.map((_, idx) => (
+              <View
+                key={idx}
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 5,
+                  marginHorizontal: 4,
+                  backgroundColor:
+                    activeIndex === idx ? Colors.accent : Colors.gray,
+                  opacity: activeIndex === idx ? 1 : 0.5,
+                }}
+              />
+            ))}
+          </View>
+        </View>
         <View style={styles.content}>
           <View style={styles.aligner}>
             <View style={styles.textbox}>
