@@ -17,6 +17,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 type RootStackParamList = {
   TabNavigator: undefined;
   Login: undefined;
+  ChangePhone: undefined;
 };
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -43,7 +44,7 @@ export default function Settings() {
       </View>
       <View style={styles.fieldContainer}>
         <GroupedField isFirst isLast fieldType="select">
-          License Aggrement
+          Licence Agreement
         </GroupedField>
       </View>
       <View style={styles.fieldContainer}>
@@ -52,6 +53,7 @@ export default function Settings() {
             styles.button,
             pressed && { backgroundColor: Colors.gray },
           ]}
+          onPress={() => navigation.navigate('ChangePhone')}
         >
           <Text style={[styles.buttonText, { color: '#0a58d0' }]}>
             Change Phone Number
