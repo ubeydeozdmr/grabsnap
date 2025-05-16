@@ -45,7 +45,7 @@ export default function Card({ item, index, handler }: CardProps) {
       onPress={() => onPressHandler(item)}
     >
       <Image
-        source={{ uri: item.image }}
+        source={{ uri: item.image[0] }}
         style={styles.image}
         onError={() =>
           console.error(`Failed to load image for car #${item.id}`)
