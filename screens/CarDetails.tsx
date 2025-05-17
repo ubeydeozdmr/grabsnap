@@ -1,7 +1,7 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { type NativeStackScreenProps } from '@react-navigation/native-stack';
-import React, { useState } from 'react';
+import { NativeStackNavigationProp, type NativeStackScreenProps } from '@react-navigation/native-stack';
+import React, { useContext, useState } from 'react';
 import {
   Image,
   Linking,
@@ -20,18 +20,41 @@ import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
 import { normalize } from '../utils/normalize';
 
+import { AuthProvider } from '../context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
+
 type RootStackParamList = {
   CarDetails: { car: Car };
+  Login: undefined
 };
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CarDetails'>;
 
+
 export default function CarDetails({ route }: Props) {
+
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const authContext = useContext(AuthProvider);
+  
+    if (!authContext) {
+      throw new Error('Context API must be used within an AuthContext provider');
+    }
+  
+  const { isAuthenticated, setIsAuthenticated } = authContext;
+
   const [favorite, setFavorite] = useState(false);
   const { car } = route.params;
 
   function onPressHandler() {
-    setFavorite((f) => !f);
+    if(isAuthenticated){
+      setFavorite((f) => !f);  // changes the state of the fav button
+    }
+    else{
+      alert("Please login")
+      navigation.navigate('Login');
+    }
+    
   }
 
   function callSeller() {
