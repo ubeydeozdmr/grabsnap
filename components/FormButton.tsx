@@ -20,6 +20,15 @@ import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
 import { useContext } from 'react';
 import { UserProvider } from '../context/UserContext';
+import { TabNavigator } from '../App';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+type RootStackParamList = {
+  TabNavigator: undefined,
+  Login: undefined,
+  Register: undefined
+};
 
 const { width } = Dimensions.get('window');
 
@@ -36,6 +45,8 @@ export default function FormButton({
   onResult,
   mode,
 }: FormButtonProps) {
+
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const userContext = useContext(UserProvider)
 
@@ -103,6 +114,8 @@ export default function FormButton({
         phoneWarningColor = 'red';
         result *= 0;
       }
+
+      result == 1 ? navigation.navigate("TabNavigator") : navigation.navigate("Register")
     }
 
     // Login Mode
@@ -111,6 +124,7 @@ export default function FormButton({
       if(regDataSet.email == userInfos.email && regDataSet.password == userInfos.password && userInfos.email != ""){
         passwordWarning = 'Correct Password, welcome!';
         passwordWarningColor = 'green';
+        navigation.navigate("TabNavigator")
       }
       else{
         passwordWarning = 'Wrong credentials!';
