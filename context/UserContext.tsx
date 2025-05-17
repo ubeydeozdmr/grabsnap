@@ -2,6 +2,7 @@ import React, { createContext, useState, ReactNode } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 export interface UserInfo {
+  full_name: string;
   email: string;
   password: string;
   phone_number: string;
@@ -20,6 +21,7 @@ interface UserContextProps {
 
 export default function UserContext({ children }: UserContextProps) {
   const [userInfos, setUserInfos] = useState<UserInfo>({
+    full_name: '',
     email: '',
     password: '',
     phone_number: '',

@@ -26,6 +26,7 @@ export default function Register() {
   const { userInfos, setUserInfos } = userContext;
 
   const [regDataSet, setRegDataSet] = useState({
+    full_name: '',
     email: '',
     password: '',
     passwordRep: '',
@@ -40,6 +41,9 @@ export default function Register() {
 //   }
 // }, [isAuthenticated]);
 
+  const [nameWarning, setNameWarning] = useState(null);
+  const [showNameWarning, setShowNamelWarning] = useState(false);
+  const [nameWarningColor, setNameWarningColor] = useState('red');
 
   const [emailWarning, setEmailWarning] = useState(null);
   const [showEmailWarning, setShowEmailWarning] = useState(false);
@@ -60,6 +64,22 @@ export default function Register() {
     <View style={styles.container}>
       <View style={styles.registerContainer}>
         <FormTitle title="Register" />
+
+        {/* Full Name */}
+        <TextInput
+          style={styles.input}
+          placeholder="Full Name"
+          value={regDataSet.full_name}
+          onChangeText={(text) => {
+            setRegDataSet((prev) => ({ ...prev, full_name: text }));
+            setUserInfos((prev) => ({ ...prev, full_name: text }));
+          }}
+          keyboardType="default" 
+          autoCapitalize="words" 
+          autoCorrect={false}
+          textContentType="name" 
+        />
+
 
         {/* Email */}
         <TextInput
