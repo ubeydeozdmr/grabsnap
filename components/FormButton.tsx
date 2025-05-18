@@ -18,6 +18,17 @@ import {
 
 import { Colors } from '../constants/colors';
 import { Fonts } from '../constants/fonts';
+import { useContext } from 'react';
+import { UserProvider } from '../context/UserContext';
+import { TabNavigator } from '../App';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+type RootStackParamList = {
+  TabNavigator: undefined,
+  Login: undefined,
+  Register: undefined
+};
 
 const { width } = Dimensions.get('window');
 
@@ -34,6 +45,16 @@ export default function FormButton({
   onResult,
   mode,
 }: FormButtonProps) {
+
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const userContext = useContext(UserProvider)
+
+   if (!userContext) {
+    throw new Error('Context API must be used within an AuthContext provider');
+  }
+  const { userInfos, setUserInfos } = userContext;
+
   const handlePress = async () => {
     let emailWarning = null;
     let passwordWarning = null;
@@ -48,11 +69,14 @@ export default function FormButton({
     let codeWarning = null;
     let codeWarningColor = 'red';
 
+    let result = 1;
+
     // Register Mode
     if (mode == 'register') {
       // Email validation
       if (!isEmailValid(regDataSet.email)) {
         emailWarning = 'Please enter a valid email address!';
+        result *= 0;
       } else {
         emailWarning = 'Email address is valid!';
         emailWarningColor = 'green'; // Set to green if email is valid
@@ -68,9 +92,11 @@ export default function FormButton({
       if (!isMatch) {
         passwordWarning = 'Passwords do not match!';
         passwordWarningColor = 'red'; // Ensure red color if passwords don't match
+        result *= 0;
       } else if (!isValid) {
         passwordWarning = 'Password you entered is not valid!';
         passwordWarningColor = 'red'; // Ensure red color if password is invalid
+        result *= 0;
       } else {
         passwordWarning = 'Passwords correctly match!';
         passwordWarningColor = 'green';
@@ -86,21 +112,24 @@ export default function FormButton({
       } else {
         phoneWarning = 'Phone number not valid!';
         phoneWarningColor = 'red';
+        result *= 0;
       }
+
+      result == 1 ? navigation.navigate("TabNavigator") : navigation.navigate("Register")
     }
 
     // Login Mode
     else if (mode == 'login') {
       // Check if the email entered not taken and the password is correct
-      if (
-        (await isEmailTaken(regDataSet.email)) &&
-        (await isPasswordCorrect(regDataSet.password))
-      ) {
+      if(regDataSet.email == userInfos.email && regDataSet.password == userInfos.password && userInfos.email != ""){
         passwordWarning = 'Correct Password, welcome!';
         passwordWarningColor = 'green';
-      } else {
+        navigation.navigate("TabNavigator")
+      }
+      else{
         passwordWarning = 'Wrong credentials!';
         passwordWarningColor = 'red';
+        result *= 0;
       }
     }
 
@@ -166,6 +195,7 @@ export default function FormButton({
       compWarningColor,
       codeWarning, // verification code warning
       codeWarningColor,
+      result
     });
   };
 
