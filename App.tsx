@@ -8,12 +8,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import AuthContext from './context/AuthContext';
+import UserContext from './context/UserContext';
 
 import { Car } from './api/data';
 import RoundedButton from './components/RoundedButton';
@@ -210,76 +212,70 @@ export default function App() {
   if (!fontsLoaded) return null;
 
   return (
-    <>
-      <StatusBar style="auto" />
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="TabNavigator"
-            screenOptions={{
-              headerTitle: 'GrabSnap',
-              headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
-              headerStyle: { backgroundColor: Colors.background },
-            }}
-          >
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Welcome" component={Welcome} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="ChangePass" component={ChangePass} />
-            <Stack.Screen name="Verification" component={Verification} />
-            <Stack.Screen name="ChangePhone" component={ChangePhone} />
-            <Stack.Screen
-              name="TabNavigator"
-              component={TabNavigator}
-              options={{
-                headerShown: false,
+    <UserContext>
+      <AuthContext>
+        <StatusBar style="auto" />
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <Stack.Navigator
+              initialRouteName="TabNavigator"
+              screenOptions={{
                 headerTitle: 'GrabSnap',
+                headerTitleStyle: { fontFamily: Fonts.Satoshi.Bold },
+                headerStyle: { backgroundColor: Colors.background },
               }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="CarDetails"
-              component={CarDetails}
-              options={{
-                headerShown: true,
-                headerTitle: 'Car Details',
-              }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="Makes"
-              component={Makes}
-              options={{
-                headerShown: true,
-                headerTitle: 'Makes',
-              }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="Models"
-              component={Models}
-              options={{
-                headerShown: true,
-                headerTitle: 'Models',
-              }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="SellCar"
-              component={SellCar}
-              options={{
-                headerShown: true,
-                headerTitle: 'New Listing',
-              }}
-            ></Stack.Screen>
-            <Stack.Screen
-              name="SubmissionCompleted"
-              component={SubmissionCompleted}
-              options={{
-                headerShown: true,
-                headerTitle: 'Submission Completed',
-              }}
-            ></Stack.Screen>
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </>
+            >
+              <Stack.Screen name="Register" component={Register} />
+              <Stack.Screen name="Welcome" component={Welcome} />
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="ChangePass" component={ChangePass} />
+              <Stack.Screen name="Verification" component={Verification} />
+              <Stack.Screen name="ChangePhone" component={ChangePhone} />
+              <Stack.Screen
+                name="TabNavigator"
+                component={TabNavigator}
+                options={{
+                  headerShown: false,
+                  headerTitle: 'GrabSnap',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="CarDetails"
+                component={CarDetails}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Car Details',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="Makes"
+                component={Makes}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Makes',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="Models"
+                component={Models}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Models',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="SellCar"
+                component={SellCar}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Sell Car',
+                }}
+              ></Stack.Screen>
+            </Stack.Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </AuthContext>
+    </UserContext>
   );
 }
 

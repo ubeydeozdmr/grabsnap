@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native';
+import { AuthProvider } from '../../context/AuthContext';
+import { UserProvider } from '../../context/UserContext';
 
 import FormButton from '../../components/FormButton';
 import FormTitle from '../../components/FormTitle';
@@ -12,12 +14,36 @@ import { isPasswordValid } from '../../utils/validation';
 const { width, height } = Dimensions.get('window');
 
 export default function Register() {
+
+  const authContext = useContext(AuthProvider);
+  const userContext = useContext(UserProvider)
+
+  if (!authContext || !userContext) {
+    throw new Error('Context API must be used within an AuthContext provider');
+  }
+
+  const { isAuthenticated, setIsAuthenticated } = authContext;
+  const { userInfos, setUserInfos } = userContext;
+
   const [regDataSet, setRegDataSet] = useState({
+    full_name: '',
     email: '',
     password: '',
     passwordRep: '',
     phoneNumber: '',
   });
+
+  // When the registration process is totally on a proper level, turns into true.
+
+//   useEffect(() => {
+//   if (isAuthenticated) {
+//     alert(true);
+//   }
+// }, [isAuthenticated]);
+
+  const [nameWarning, setNameWarning] = useState(null);
+  const [showNameWarning, setShowNamelWarning] = useState(false);
+  const [nameWarningColor, setNameWarningColor] = useState('red');
 
   const [emailWarning, setEmailWarning] = useState(null);
   const [showEmailWarning, setShowEmailWarning] = useState(false);
@@ -39,19 +65,37 @@ export default function Register() {
       <View style={styles.registerContainer}>
         <FormTitle title="Register" />
 
+        {/* Full Name */}
+        <TextInput
+          style={styles.input}
+          placeholder="Full Name"
+          value={regDataSet.full_name}
+          onChangeText={(text) => {
+            setRegDataSet((prev) => ({ ...prev, full_name: text }));
+            setUserInfos((prev) => ({ ...prev, full_name: text }));
+          }}
+          keyboardType="default" 
+          autoCapitalize="words" 
+          autoCorrect={false}
+          textContentType="name" 
+        />
+
+
         {/* Email */}
         <TextInput
           style={styles.input}
           placeholder="Email"
           value={regDataSet.email}
-          onChangeText={(text) =>
-            setRegDataSet((prev) => ({ ...prev, email: text }))
-          }
+          onChangeText={(text) => {
+            setRegDataSet((prev) => ({ ...prev, email: text }));
+            setUserInfos((prev) => ({ ...prev, email: text }));
+          }}
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
           textContentType="emailAddress"
         />
+
 
         {showEmailWarning && (
           <Text style={[styles.warningText, { color: emailWarningColor }]}>
@@ -65,9 +109,10 @@ export default function Register() {
           placeholder="Password"
           secureTextEntry
           value={regDataSet.password}
-          onChangeText={(text) =>
+          onChangeText={(text) =>{
             setRegDataSet((prev) => ({ ...prev, password: text }))
-          }
+            setUserInfos((prev) => ({ ...prev, password: text }));
+          }}
         />
 
         <TextWarning
@@ -103,9 +148,10 @@ export default function Register() {
           style={styles.input}
           placeholder="Phone Number"
           value={regDataSet.phoneNumber}
-          onChangeText={(text) =>
+          onChangeText={(text) =>{
             setRegDataSet((prev) => ({ ...prev, phoneNumber: text }))
-          }
+            setUserInfos((prev) => ({ ...prev, phoneNumber: text }));
+          }}
           keyboardType="numeric"
           maxLength={11} // the phone number consists of 11 digits.
         />
@@ -143,6 +189,7 @@ export default function Register() {
             passwordWarningColor,
             phoneWarning,
             phoneWarningColor,
+            result 
           }) => {
             if (emailWarning) {
               setEmailWarning(emailWarning);
@@ -170,6 +217,8 @@ export default function Register() {
             } else {
               setShowPhoneWarning(false);
             }
+            result == 1 ? setIsAuthenticated(true) : setIsAuthenticated(false);
+            // alert(JSON.stringify(userInfos))
           }}
         />
       </View>
@@ -209,3 +258,19 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
