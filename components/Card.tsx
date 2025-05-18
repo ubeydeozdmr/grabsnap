@@ -5,6 +5,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Car } from '../api/data';
 import { Fonts } from '../constants/fonts';
 import { normalize } from '../utils/normalize';
+import { fallbackImage } from '../constants/miscellaneous';
 
 type CardProps = {
   item: Car;
@@ -45,7 +46,7 @@ export default function Card({ item, index, handler }: CardProps) {
       onPress={() => onPressHandler(item)}
     >
       <Image
-        source={{ uri: item.image }}
+        source={{ uri: item.image.length > 0 ? item.image[0] : fallbackImage }}
         style={styles.image}
         onError={() =>
           console.error(`Failed to load image for car #${item.id}`)

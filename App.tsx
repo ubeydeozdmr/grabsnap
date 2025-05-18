@@ -36,6 +36,7 @@ import Register from './screens/auth/Register';
 import Verification from './screens/auth/Verification';
 import Welcome from './screens/auth/Welcome';
 import ChangePhone from './screens/auth/ChangePhone';
+import Filter from './screens/Filter';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -52,6 +53,7 @@ type RootStackParamList = {
   ChangePass: undefined;
   Verification: undefined;
   ChangePhone: undefined;
+  Filter: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -239,6 +241,14 @@ export default function App() {
                   headerTitle: 'GrabSnap',
                 }}
               ></Stack.Screen>
+              <Stack.Screen
+                name="Filter"
+                component={Filter}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Filter',
+                }}
+              />
               <Stack.Screen
                 name="CarDetails"
                 component={CarDetails}
