@@ -33,6 +33,7 @@ import { UserProvider } from '../context/UserContext';
 type RootStackParamList = {
   CarDetails: { car: Car };
   Login: undefined;
+  SellCar: { car: Car };
 };
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CarDetails'>;
@@ -86,6 +87,10 @@ export default function CarDetails({ route }: Props) {
 
   function callSeller() {
     Linking.openURL(`tel:${car.seller.phone}`);
+  }
+
+  function makeChange() {
+    navigation.navigate('SellCar', { car });
   }
 
   return (
@@ -256,14 +261,33 @@ export default function CarDetails({ route }: Props) {
           </Pressable>
         </View>
       </ScrollView>
-      <Pressable
-        onPress={callSeller}
-        style={({ pressed }) => [styles.ctsButton, pressed && styles.pressed]}
-      >
-        <Text style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}>
-          CALL THE SELLER
-        </Text>
-      </Pressable>
+      {/* This logic is actually just a patch for the seller button, because this project does not have a backend */}
+      {!isAuthenticated || car.city !== 'Istanbul' ? (
+        <Pressable
+          onPress={callSeller}
+          style={({ pressed }) => [styles.ctsButton, pressed && styles.pressed]}
+        >
+          <Text
+            style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}
+          >
+            CALL THE SELLER
+          </Text>
+        </Pressable>
+      ) : (
+        <Pressable
+          style={({ pressed }) => [
+            styles.sellerButton,
+            pressed && styles.pressed,
+          ]}
+        >
+          <Text
+            style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}
+            onPress={makeChange}
+          >
+            MAKE A CHANGE
+          </Text>
+        </Pressable>
+      )}
     </>
   );
 }
@@ -374,6 +398,16 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     backgroundColor: Colors.accent,
+    alignItems: 'center',
+  },
+  sellerButton: {
+    position: 'absolute',
+    bottom: 28,
+    left: 16,
+    right: 16,
+    padding: 16,
+    borderRadius: 8,
+    backgroundColor: '#0A58D0',
     alignItems: 'center',
   },
   pressed: {
