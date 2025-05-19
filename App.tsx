@@ -8,35 +8,36 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
-import AuthContext from './context/AuthContext';
-import UserContext from './context/UserContext';
 
 import { Car } from './api/data';
 import RoundedButton from './components/RoundedButton';
 import { Colors } from './constants/colors';
 import { Fonts } from './constants/fonts';
+import AuthContext from './context/AuthContext';
+import UserContext from './context/UserContext';
+import ChangePass from './screens/auth/ChangePass';
+import ChangePhone from './screens/auth/ChangePhone';
+import Login from './screens/auth/Login';
+import Register from './screens/auth/Register';
+import Verification from './screens/auth/Verification';
+import Welcome from './screens/auth/Welcome';
 import CarDetails from './screens/CarDetails';
+import Filter from './screens/Filter';
 import Home from './screens/Home';
 import Listed from './screens/Listed';
 import Makes from './screens/Makes';
 import Models from './screens/Models';
 import Profile from './screens/Profile';
+import Report from './screens/Report';
 import SellCar from './screens/SellCar';
 import Settings from './screens/Settings';
 import SubmissionCompleted from './screens/SubmissionCompleted';
-import ChangePass from './screens/auth/ChangePass';
-import Login from './screens/auth/Login';
-import Register from './screens/auth/Register';
-import Verification from './screens/auth/Verification';
-import Welcome from './screens/auth/Welcome';
-import ChangePhone from './screens/auth/ChangePhone';
-import Filter from './screens/Filter';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -54,6 +55,7 @@ type RootStackParamList = {
   Verification: undefined;
   ChangePhone: undefined;
   Filter: undefined;
+  Report: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -279,6 +281,14 @@ export default function App() {
                 options={{
                   headerShown: true,
                   headerTitle: 'Sell Car',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="Report"
+                component={Report}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Report Listing',
                 }}
               ></Stack.Screen>
               <Stack.Screen
