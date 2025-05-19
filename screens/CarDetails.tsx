@@ -34,6 +34,7 @@ type RootStackParamList = {
   CarDetails: { car: Car };
   Login: undefined;
   SellCar: { car: Car };
+  Report: { car: Car };
 };
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CarDetails'>;
@@ -91,6 +92,10 @@ export default function CarDetails({ route }: Props) {
 
   function makeChange() {
     navigation.navigate('SellCar', { car });
+  }
+
+  function reportList() {
+    navigation.navigate('Report', { car });
   }
 
   return (
@@ -251,6 +256,7 @@ export default function CarDetails({ route }: Props) {
               styles.reportButton,
               pressed && styles.pressed,
             ]}
+            onPress={reportList}
           >
             <MaterialIcons
               name="warning-amber"
