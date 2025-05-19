@@ -281,6 +281,14 @@ export default function App() {
                   headerTitle: 'Sell Car',
                 }}
               ></Stack.Screen>
+              <Stack.Screen
+                name="SubmissionCompleted"
+                component={SubmissionCompleted}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Submission Completed',
+                }}
+              ></Stack.Screen>
             </Stack.Navigator>
           </NavigationContainer>
         </SafeAreaProvider>
