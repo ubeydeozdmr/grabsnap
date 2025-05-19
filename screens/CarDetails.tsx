@@ -1,6 +1,9 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { NativeStackNavigationProp, type NativeStackScreenProps } from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  type NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 import React, { useContext, useState } from 'react';
 import {
   Dimensions,
@@ -25,47 +28,69 @@ import { normalize } from '../utils/normalize';
 
 import { AuthProvider } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
+import { UserProvider } from '../context/UserContext';
 
 type RootStackParamList = {
   CarDetails: { car: Car };
-  Login: undefined
+  Login: undefined;
+  SellCar: { car: Car };
 };
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CarDetails'>;
 
-
 export default function CarDetails({ route }: Props) {
-
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const authContext = useContext(AuthProvider);
-  
-    if (!authContext) {
-      throw new Error('Context API must be used within an AuthContext provider');
-    }
-  
-  const { isAuthenticated, setIsAuthenticated } = authContext;
+  const userContext = useContext(UserProvider);
 
-  const [favorite, setFavorite] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const progress = useSharedValue(0);
+  if (!authContext) {
+    throw new Error('Context API must be used within an AuthContext provider');
+  }
+  if (!userContext) {
+    throw new Error('UserContext must be used within a UserContext provider');
+  }
+
+  const { isAuthenticated } = authContext;
+  const { userInfos, setUserInfos } = userContext;
+
   const { car } = route.params;
-
   const width = Dimensions.get('window').width;
 
+  // Favori durumu, listed_cars içinde bu arabanın id'si var mı ona göre belirlenir
+  const isFavorite = userInfos.listed_cars.includes(car.id);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const progress = useSharedValue(0);
+
   function onPressHandler() {
-    if(isAuthenticated){
-      setFavorite((f) => !f);  // changes the state of the fav button
-    }
-    else{
-      alert("Please login")
+    if (isAuthenticated) {
+      if (isFavorite) {
+        // Favorilerden çıkar
+        setUserInfos((prev) => ({
+          ...prev,
+          listed_cars: prev.listed_cars.filter((id) => id !== car.id),
+        }));
+      } else {
+        // Favorilere ekle
+        setUserInfos((prev) => ({
+          ...prev,
+          listed_cars: [...prev.listed_cars, car.id],
+        }));
+      }
+    } else {
+      alert('Please login');
       navigation.navigate('Login');
     }
-    
   }
 
   function callSeller() {
     Linking.openURL(`tel:${car.seller.phone}`);
+  }
+
+  function makeChange() {
+    navigation.navigate('SellCar', { car });
   }
 
   return (
@@ -130,7 +155,7 @@ export default function CarDetails({ route }: Props) {
                 onPress={onPressHandler}
                 accessibilityLabel="Toggle Favorite"
               >
-                {favorite ? (
+                {isFavorite ? (
                   <MaterialIcons name="favorite" size={32} color="white" />
                 ) : (
                   <MaterialIcons
@@ -236,14 +261,33 @@ export default function CarDetails({ route }: Props) {
           </Pressable>
         </View>
       </ScrollView>
-      <Pressable
-        onPress={callSeller}
-        style={({ pressed }) => [styles.ctsButton, pressed && styles.pressed]}
-      >
-        <Text style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}>
-          CALL THE SELLER
-        </Text>
-      </Pressable>
+      {/* This logic is actually just a patch for the seller button, because this project does not have a backend */}
+      {!isAuthenticated || car.city !== 'Istanbul' ? (
+        <Pressable
+          onPress={callSeller}
+          style={({ pressed }) => [styles.ctsButton, pressed && styles.pressed]}
+        >
+          <Text
+            style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}
+          >
+            CALL THE SELLER
+          </Text>
+        </Pressable>
+      ) : (
+        <Pressable
+          style={({ pressed }) => [
+            styles.sellerButton,
+            pressed && styles.pressed,
+          ]}
+        >
+          <Text
+            style={{ fontFamily: Fonts.Satoshi.Black, color: Colors.white }}
+            onPress={makeChange}
+          >
+            MAKE A CHANGE
+          </Text>
+        </Pressable>
+      )}
     </>
   );
 }
@@ -354,6 +398,16 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     backgroundColor: Colors.accent,
+    alignItems: 'center',
+  },
+  sellerButton: {
+    position: 'absolute',
+    bottom: 28,
+    left: 16,
+    right: 16,
+    padding: 16,
+    borderRadius: 8,
+    backgroundColor: '#0A58D0',
     alignItems: 'center',
   },
   pressed: {
