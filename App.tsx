@@ -37,6 +37,7 @@ import Profile from './screens/Profile';
 import Report from './screens/Report';
 import SellCar from './screens/SellCar';
 import Settings from './screens/Settings';
+import SecuritySettings from './screens/SecuritySettings';
 import SubmissionCompleted from './screens/SubmissionCompleted';
 
 SplashScreen.preventAutoHideAsync();
@@ -56,6 +57,7 @@ type RootStackParamList = {
   ChangePhone: undefined;
   Filter: undefined;
   Report: undefined;
+  SecuritySettings: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -297,6 +299,14 @@ export default function App() {
                 options={{
                   headerShown: true,
                   headerTitle: 'Submission Completed',
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="SecuritySettings"
+                component={SecuritySettings}
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Security Settings',
                 }}
               ></Stack.Screen>
             </Stack.Navigator>
