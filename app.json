@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.grabsnap.app"
+      "bundleIdentifier": "com.grabsnap.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -26,6 +29,12 @@
     "web": {
       "favicon": "./assets/favicon-grabsnap.png"
     },
-    "plugin": ["expo-font"]
+    "plugin": ["expo-font"],
+    "extra": {
+      "eas": {
+        "projectId": "c685df6e-106f-4f00-a74a-084404849a18"
+      }
+    },
+    "assetBundlePatterns": ["**/*"]
   }
 }
