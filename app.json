@@ -29,12 +29,14 @@
     "web": {
       "favicon": "./assets/favicon-grabsnap.png"
     },
-    "plugin": ["expo-font"],
     "extra": {
       "eas": {
         "projectId": "c685df6e-106f-4f00-a74a-084404849a18"
       }
     },
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": ["expo-font"]
   }
 }
